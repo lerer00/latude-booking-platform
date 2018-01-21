@@ -1,0 +1,98 @@
+.default {
+    background-color: transparent;
+}
+
+.default .content {
+    position: relative;
+    width: 1180px;
+    margin: auto;
+    padding: 24px 0;
+}
+
+.default .content .icon {
+    display: block;
+    margin: auto auto 36px auto;
+    width: 100px;
+}
+
+.default .content .booking-grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px 16px;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.default .content .booking-grid-container .booking-grid-item {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 3px;
+    padding-bottom: 24px;
+}
+
+.default .content .booking-grid-container .filters-text {
+    margin: 24px;
+    color: #a7a7a7;
+    font-size: 1em;
+    line-height: 1.5;
+    text-align: left;
+}
+
+.default .content .booking-grid-container .filters-text .filter-region,
+.default .content .booking-grid-container .filters-text .filter-range {
+    margin: 0 4px 0 0;
+}
+
+.default .content .booking-grid-container .booking-grid-item-map {
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+
+.default .content .booking-grid-container .booking-grid-item-map {
+    position: relative;
+    height: 600px;
+    padding: 0;
+}
+
+.default .content .booking-grid-container .booking-grid-item-map .location {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 48px;
+    z-index: 999;
+    opacity: 0.75;
+    transform: translate(-50%, -100%);
+}
+
+.default .content .booking-grid-container .booking-grid-item-map .mapboxgl-map {
+    border-radius: 3px;
+}
+
+.default .content .booking-grid-container .booking-grid-item .button {
+    width: 80%;
+    vertical-align: middle;
+}
+
+.default .content .booking-grid-container .booking-grid-item .check-label {
+    color: #8c8c8c;
+    margin: 8px 0 0 8px;
+}
+
+.default .content .booking-grid-container .booking-grid-item .check-date {
+    font-size: 1em;
+    color: #595959;
+    width: 100%;
+    text-align: center;
+    text-transform: lowercase;
+}
+
+.default .content .booking-grid-container .booking-grid-item .check-date .days, .default .content .booking-grid-item .check-date .month, .default .content .booking-grid-item .check-date .year {
+    font-size: 0.9em;
+    color: #8c8c8c;
+    padding: 2px;
+}
+
+.default .content .booking-grid-container .booking-grid-item .check-date .day {
+    font-size: 1.6em;
+    padding: 0 4px 0 2px;
+}

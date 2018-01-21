@@ -1,12 +1,16 @@
 import * as React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Home from './home';
 import './App.css';
 
 class App extends React.Component {
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <div>
-          <h1>Booking platform used by user to book their stays.</h1>
+          <BrowserRouter>
+            <Home />
+          </BrowserRouter>
         </div>
       </div>
     );

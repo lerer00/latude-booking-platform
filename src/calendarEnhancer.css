@@ -1,0 +1,27 @@
+/* REACT DATE RANGE */
+
+.rdr-Calendar {
+    display: block !important;
+    margin: auto;
+}
+
+.rdr-Calendar .rdr-MonthAndYear-innerWrapper button {
+    cursor: pointer;
+    background-color: transparent !important;
+}
+
+.rdr-Calendar .rdr-Days .is-inRange {
+    background: repeating-linear-gradient( -55deg, #FFFFFF, #FFFFFF 2px, #F4F4F4 2px, #F4F4F4 4px) !important;
+}
+
+.rdr-Calendar .rdr-Day {
+    color: #595959 !important;
+    border: solid 2px transparent;
+}
+
+.rdr-Calendar .rdr-Days .is-selected {
+    border-radius: 3px;
+    border: solid 2px #399AFF;
+    background-color: transparent !important;
+    background: none !important;
+}
