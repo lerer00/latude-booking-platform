@@ -6,9 +6,10 @@ const moment = require('moment');
 import { Button, IButtonState } from '../../button';
 import { FormattedPlural } from 'react-intl';
 const ReactMapboxGl = require('react-mapbox-gl').default;
-const Layer = require('react-mapbox-gl').Layer;
-const Feature = require('react-mapbox-gl').Feature;
+// const Layer = require('react-mapbox-gl').Layer;
+// const Feature = require('react-mapbox-gl').Feature;
 const location = require('../../img/ego/location-1.svg');
+const filter = require('../../img/ego/filter-1.svg');
 
 const Map = ReactMapboxGl({
   accessToken: 'pk.eyJ1IjoibGVyZXIwMCIsImEiOiJjamNvNTI3MzkxdmFnMnJuM2licjNsYmM3In0.sR6op3azARBpWg_-JkDf-Q',
@@ -23,7 +24,12 @@ export namespace Default {
   export interface State {
     dateRange: any;
     radiusCenter: Array<number>;
+    geoQueryForm: IGeoQueryForm;
   }
+}
+
+export interface IGeoQueryForm {
+  value: string;
 }
 
 class Default extends React.Component<Default.Props, Default.State> {
@@ -35,15 +41,18 @@ class Default extends React.Component<Default.Props, Default.State> {
         startDate: moment(),
         endDate: moment().day(2)
       },
-      radiusCenter: [0, 0]
+      radiusCenter: [0, 0],
+      geoQueryForm: {
+        value: ''
+      }
     };
 
     this.handleDateRangeSelect = this.handleDateRangeSelect.bind(this);
     this.handleSearchAction = this.handleSearchAction.bind(this);
+    this.handleGeoQueryValueChange = this.handleGeoQueryValueChange.bind(this);
   }
 
   handleDateRangeSelect(range: any) {
-    console.log(range);
     this.setState({
       dateRange: range
     });
@@ -51,6 +60,16 @@ class Default extends React.Component<Default.Props, Default.State> {
 
   handleSearchAction() {
     console.log('searching...');
+  }
+
+  handleGeoQueryValueChange(event: any) {
+    var tmpForm = {
+      value: event.target.value
+    };
+
+    this.setState({
+      geoQueryForm: tmpForm
+    });
   }
 
   onMapMove(map: any, event: React.SyntheticEvent<any>) {
@@ -65,76 +84,46 @@ class Default extends React.Component<Default.Props, Default.State> {
       <div className='default'>
         <div className='content'>
           <div className='booking-grid-container'>
-            <div className='booking-grid-item'>
-              <DateRange
-                calendars={1}
-                startDate={this.state.dateRange.startDate}
-                endDate={this.state.dateRange.endDate}
-                onInit={this.handleDateRangeSelect}
-                onChange={this.handleDateRangeSelect}
-              />
+            <div className='booking-grid-item booking-grid-item-calendar'>
+              <div className='calendar'>
+                <DateRange
+                  calendars={2}
+                  startDate={this.state.dateRange.startDate}
+                  endDate={this.state.dateRange.endDate}
+                  onInit={this.handleDateRangeSelect}
+                  onChange={this.handleDateRangeSelect}
+                />
+              </div>
             </div>
             <div className='booking-grid-item'>
-              <p className='filters-text'>
-                You are looking for property in the region of <span className='filter-region'>{'London'}</span>
-                from <span className='filter-range'>{this.state.dateRange.startDate.format('dddd, D MMMM YYYY')} till {this.state.dateRange.endDate.format('dddd, D MMMM YYYY')}</span>
-                for a total number of <span className='filter-nights'>
-                  {this.state.dateRange.endDate.diff(this.state.dateRange.startDate, 'days') + ' '}
-                  <FormattedPlural
-                    value={this.state.dateRange.endDate.diff(this.state.dateRange.startDate, 'days')}
-                    one='night'
-                    other='nights'
-                  />
-                </span>.
+              <div className='filters-results'>
+                <img className='filters-logo' src={filter} />
+                <p className='filters-text'>
+                  You are looking for property in the region of <span className='filter-region'>{'London'}</span>
+                  from <span className='filter-range'>{this.state.dateRange.startDate.format('dddd, D MMMM YYYY')} till {this.state.dateRange.endDate.format('dddd, D MMMM YYYY')}</span>
+                  for a total number of <span className='filter-nights'>
+                    {this.state.dateRange.endDate.diff(this.state.dateRange.startDate, 'days') + ' '}
+                    <FormattedPlural
+                      value={this.state.dateRange.endDate.diff(this.state.dateRange.startDate, 'days')}
+                      one='night'
+                      other='nights'
+                    />
+                  </span>.
               </p>
+              </div>
+            </div>
+            <div className='booking-grid-item booking-grid-item-geo-query'>
+              <form className='geo-query'>
+                <input type='text' placeholder={'What\'s next... where do you want to travel?'} value={this.state.geoQueryForm.value} onChange={this.handleGeoQueryValueChange} />
+              </form>
+            </div>
+            <div className='booking-grid-item booking-grid-item-search'>
               <Button
                 text='Search'
                 state={IButtonState.default}
                 action={this.handleSearchAction}
               />
             </div>
-            {/* <div className='booking-grid-item check-in'>
-              <p className='check-label'>Check-in</p>
-              <p className='check-date'>
-                <span className='days'>{
-                  this.state.dateRange.startDate &&
-                  this.state.dateRange.startDate.format('dddd').toString()
-                }</span>
-                <span className='day'>{
-                  this.state.dateRange.startDate &&
-                  this.state.dateRange.startDate.format('D').toString()
-                }</span>
-                <span className='month'>{
-                  this.state.dateRange.startDate &&
-                  this.state.dateRange.startDate.format('MMMM').toString()
-                }</span>
-                <span className='year'>{
-                  this.state.dateRange.startDate &&
-                  this.state.dateRange.startDate.format('YYYY').toString()
-                }</span>
-              </p>
-            </div>
-            <div className='booking-grid-item check-out'>
-              <p className='check-label'>Check-out</p>
-              <p className='check-date'>
-                <span className='days'>{
-                  this.state.dateRange.endDate &&
-                  this.state.dateRange.endDate.format('dddd').toString()
-                }</span>
-                <span className='day'>{
-                  this.state.dateRange.endDate &&
-                  this.state.dateRange.endDate.format('D').toString()
-                }</span>
-                <span className='month'>{
-                  this.state.dateRange.endDate &&
-                  this.state.dateRange.endDate.format('MMMM').toString()
-                }</span>
-                <span className='year'>{
-                  this.state.dateRange.endDate &&
-                  this.state.dateRange.endDate.format('YYYY').toString()
-                }</span>
-              </p>
-            </div> */}
             <div className='booking-grid-item booking-grid-item-map'>
               <img className='location' src={location} />
 
@@ -145,8 +134,9 @@ class Default extends React.Component<Default.Props, Default.State> {
                   width: '100%'
                 }}
                 onMove={(map: any, event: React.SyntheticEvent<any>) => { this.onMapMove(map, event); }}
+                onStyleLoad={(map: any, event: React.SyntheticEvent<any>) => { this.onMapMove(map, event); }}
               >
-                <Layer
+                {/* <Layer
                   id='radius'
                   type='circle'
                   paint={{
@@ -159,7 +149,7 @@ class Default extends React.Component<Default.Props, Default.State> {
                   }}
                 >
                   <Feature coordinates={this.state.radiusCenter} />
-                </Layer>
+                </Layer> */}
               </Map>
             </div>
           </div>

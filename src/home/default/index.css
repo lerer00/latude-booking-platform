@@ -9,12 +9,6 @@
     padding: 24px 0;
 }
 
-.default .content .icon {
-    display: block;
-    margin: auto auto 36px auto;
-    width: 100px;
-}
-
 .default .content .booking-grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -24,23 +18,83 @@
 }
 
 .default .content .booking-grid-container .booking-grid-item {
+    display: flex;
+    vertical-align: center;
+    align-items: center;
+    height: 100%;
     position: relative;
     background-color: #ffffff;
     border-radius: 3px;
-    padding-bottom: 24px;
+    box-shadow: 0 2px 3px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
 }
 
-.default .content .booking-grid-container .filters-text {
-    margin: 24px;
+.default .content .booking-grid-container .booking-grid-item .calendar, .default .content .booking-grid-container .booking-grid-item .filters, .default .content .booking-grid-container .booking-grid-item .geo-query {
+    margin: auto;
+}
+
+.default .content .booking-grid-container .booking-grid-item-calendar {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.default .content .booking-grid-container .booking-grid-item-calendar .rdr-Calendar {
+    display: inline-block !important;
+    margin: 0 24px;
+}
+
+.default .content .booking-grid-container .booking-grid-item .filters-results .filters-logo {
+    display: block;
+    margin: auto;
+    width: 32px;
+}
+
+.default .content .booking-grid-container .booking-grid-item .filters-results .filters-text {
+    margin: 16px 16px 24px 16px;
     color: #a7a7a7;
     font-size: 1em;
     line-height: 1.5;
     text-align: left;
 }
 
-.default .content .booking-grid-container .filters-text .filter-region,
-.default .content .booking-grid-container .filters-text .filter-range {
+.default .content .booking-grid-container .booking-grid-item .filters-results .filters-text .filter-region, .default .content .booking-grid-container .booking-grid-item .filters-results .filters-text .filter-range {
+    text-decoration: underline;
+    text-decoration-color: #399aff;
     margin: 0 4px 0 0;
+}
+
+.default .content .booking-grid-container .booking-grid-item-search {
+    width: 100%;
+}
+
+.default .content .booking-grid-container .booking-grid-item-search .button {
+    margin: auto;
+    height: 100%;
+    width: 100%;
+    box-shadow: none;
+}
+
+.default .content .booking-grid-container .booking-grid-item-geo-query {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.default .content .booking-grid-container .booking-grid-item-geo-query .geo-query {
+    border-radius: 3px;
+    padding: 6px;
+    width: 100%;
+}
+
+.default .content .booking-grid-container .booking-grid-item-geo-query .geo-query input {
+    width: 100%;
+    padding: 0 8px;
+    margin-right: 8px;
+    border: none;
+    outline: 0;
+    background-color: transparent;
+    display: inline-block;
+    height: 32px;
+    font-size: 0.9em;
+    color: #8c8c8c;
 }
 
 .default .content .booking-grid-container .booking-grid-item-map {
@@ -66,24 +120,6 @@
 
 .default .content .booking-grid-container .booking-grid-item-map .mapboxgl-map {
     border-radius: 3px;
-}
-
-.default .content .booking-grid-container .booking-grid-item .button {
-    width: 80%;
-    vertical-align: middle;
-}
-
-.default .content .booking-grid-container .booking-grid-item .check-label {
-    color: #8c8c8c;
-    margin: 8px 0 0 8px;
-}
-
-.default .content .booking-grid-container .booking-grid-item .check-date {
-    font-size: 1em;
-    color: #595959;
-    width: 100%;
-    text-align: center;
-    text-transform: lowercase;
 }
 
 .default .content .booking-grid-container .booking-grid-item .check-date .days, .default .content .booking-grid-item .check-date .month, .default .content .booking-grid-item .check-date .year {
