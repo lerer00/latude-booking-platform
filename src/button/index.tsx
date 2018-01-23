@@ -16,6 +16,7 @@ export namespace Button {
 }
 
 export interface IButton {
+    id: string;
     text: string;
     state: IButtonState;
     action: Function;
@@ -64,7 +65,7 @@ export class Button extends React.Component<Button.Props, Button.State> {
         }
 
         return (
-            <button className={wantedStyles} onClick={() => this.executeAction()}>
+            <button className={wantedStyles + ' ' + this.props.id} onClick={() => this.executeAction()}>
                 <span className='button-text'>{this.props.text}</span>
             </button>
         );

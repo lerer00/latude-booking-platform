@@ -4,6 +4,7 @@ import App from './App';
 import { IntlProvider } from 'react-intl';
 import './index.css';
 import './calendarEnhancer.css';
+import './modalEnhancer.css';
 
 ReactDOM.render(
     <IntlProvider locale='en'>

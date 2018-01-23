@@ -7,128 +7,97 @@
     width: 1180px;
     margin: auto;
     padding: 24px 0;
+    margin: 48px auto;
 }
 
-.default .content .booking-grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 16px 16px;
-    align-items: center;
-    margin-bottom: 16px;
-}
-
-.default .content .booking-grid-container .booking-grid-item {
-    display: flex;
-    vertical-align: center;
-    align-items: center;
-    height: 100%;
+.default .content .map {
     position: relative;
-    background-color: #ffffff;
-    border-radius: 3px;
+    width: 100%;
+    height: 800px;
     box-shadow: 0 2px 3px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+    transition: all 1s;
 }
 
-.default .content .booking-grid-container .booking-grid-item .calendar, .default .content .booking-grid-container .booking-grid-item .filters, .default .content .booking-grid-container .booking-grid-item .geo-query {
-    margin: auto;
+.default .content .map.mode-list {
+    margin-top: -808px;
 }
 
-.default .content .booking-grid-container .booking-grid-item-calendar {
-    grid-column-start: 1;
-    grid-column-end: 3;
+.default .content .map .location {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    z-index: 1;
+    opacity: 0.75;
+    transform: translate(-50%, -100%);
 }
 
-.default .content .booking-grid-container .booking-grid-item-calendar .rdr-Calendar {
-    display: inline-block !important;
-    margin: 0 24px;
+.default .content .filters {
+    position: relative;
 }
 
-.default .content .booking-grid-container .booking-grid-item .filters-results .filters-logo {
-    display: block;
-    margin: auto;
-    width: 32px;
-}
-
-.default .content .booking-grid-container .booking-grid-item .filters-results .filters-text {
-    margin: 16px 16px 24px 16px;
-    color: #a7a7a7;
-    font-size: 1em;
-    line-height: 1.5;
-    text-align: left;
-}
-
-.default .content .booking-grid-container .booking-grid-item .filters-results .filters-text .filter-region, .default .content .booking-grid-container .booking-grid-item .filters-results .filters-text .filter-range {
-    text-decoration: underline;
-    text-decoration-color: #399aff;
-    margin: 0 4px 0 0;
-}
-
-.default .content .booking-grid-container .booking-grid-item-search {
-    width: 100%;
-}
-
-.default .content .booking-grid-container .booking-grid-item-search .button {
-    margin: auto;
-    height: 100%;
-    width: 100%;
-    box-shadow: none;
-}
-
-.default .content .booking-grid-container .booking-grid-item-geo-query {
-    grid-column-start: 1;
-    grid-column-end: 3;
-}
-
-.default .content .booking-grid-container .booking-grid-item-geo-query .geo-query {
+.default .content .filters .date-selector {
+    display: grid;
+    grid-template-columns: 6fr 1fr;
+    width: 50%;
+    background-color: #ffffff;
+    z-index: 1;
+    position: absolute;
+    top: -32px;
+    left: 15%;
+    bottom: auto;
+    box-shadow: 0 2px 3px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
     border-radius: 3px;
-    padding: 6px;
-    width: 100%;
 }
 
-.default .content .booking-grid-container .booking-grid-item-geo-query .geo-query input {
-    width: 100%;
+.default .content .filters .date-selector .viewer {
     padding: 0 8px;
     margin-right: 8px;
     border: none;
     outline: 0;
     background-color: transparent;
-    display: inline-block;
-    height: 32px;
-    font-size: 0.9em;
+    height: 56px;
+    font-size: 1em;
     color: #8c8c8c;
+    cursor: default;
 }
 
-.default .content .booking-grid-container .booking-grid-item-map {
-    grid-column-start: 1;
-    grid-column-end: 4;
-}
-
-.default .content .booking-grid-container .booking-grid-item-map {
+.default .content .filters .date-selector .selector {
     position: relative;
-    height: 600px;
-    padding: 0;
+    cursor: pointer;
+    border-radius: 3px;
+    background-color: #399aff;
+    margin: 4px;
+    transition: all 0.4s;
+    outline: none;
+    border: none;
 }
 
-.default .content .booking-grid-container .booking-grid-item-map .location {
+.default .content .filters .date-selector .selector:hover {
+    box-shadow: 0 2px 3px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+}
+
+.default .content .filters .date-selector .selector .calendar-logo {
     position: absolute;
+    width: 30px;
     top: 50%;
     left: 50%;
-    width: 48px;
-    z-index: 999;
-    opacity: 0.75;
-    transform: translate(-50%, -100%);
+    transform: translate(-50%, -50%);
 }
 
-.default .content .booking-grid-container .booking-grid-item-map .mapboxgl-map {
-    border-radius: 3px;
+.default .content .filters .update-availabilities-button {
+    position: absolute;
+    top: -56px;
+    left: 66%;
+    z-index: 1;
+    height: 56px;
 }
 
-.default .content .booking-grid-container .booking-grid-item .check-date .days, .default .content .booking-grid-item .check-date .month, .default .content .booking-grid-item .check-date .year {
-    font-size: 0.9em;
-    color: #8c8c8c;
-    padding: 2px;
+.default .content .listing {
+    margin-top: 56px;
+    visibility: hidden;
 }
 
-.default .content .booking-grid-container .booking-grid-item .check-date .day {
-    font-size: 1.6em;
-    padding: 0 4px 0 2px;
+.default .content .listing.mode-list {
+    visibility: visible;
 }
