@@ -96,8 +96,9 @@
 .default .content .listing {
     margin-top: 56px;
     visibility: hidden;
+    transition: 1s all;
 }
 
-.default .content .listing.mode-list {
+.default .content .listing.mode-list, .default .content .listing.mode-hybrid {
     visibility: visible;
 }

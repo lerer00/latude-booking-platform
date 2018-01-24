@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <title>rank-army-star-1</title>
+  <g id="Duotone">
+    <polygon points="11.5 1.5 14.643 9.5 22.5 9.5 15.69 14.738 19.5 23.5 11.5 18.5 3.5 23.5 7.309 14.738 0.5 9.5 8.357 9.5 11.5 1.5" fill="#fff"/>
+    <polygon points="3.5 23.5 11.5 18.5 19.5 23.5 15.69 14.738 22.5 9.5 14.643 9.5 7.31 14.738 3.5 23.5" fill="#cce7ff"/>
+    <polygon points="11.5 1.5 14.643 9.5 22.5 9.5 15.69 14.738 19.5 23.5 11.5 18.5 3.5 23.5 7.309 14.738 0.5 9.5 8.357 9.5 11.5 1.5" fill="none" stroke="#1078ff" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="Frames-24px">
+    <rect width="24" height="24" fill="none"/>
+  </g>
+</svg>

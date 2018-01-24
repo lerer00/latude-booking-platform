@@ -1,0 +1,11 @@
+.rating {
+    position: relative;
+}
+
+.rating .full-star {
+    margin-right: 2px;
+}
+
+.rating .half-star {
+    margin-left: -4px;
+}

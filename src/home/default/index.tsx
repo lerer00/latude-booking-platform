@@ -1,10 +1,11 @@
 import * as React from 'react';
 import './index.css';
+import TileProperty from '../../tile/property';
+import { Button, IButtonState } from '../../button';
 
 const DateRange = require('react-date-range').DateRange;
 const moment = require('moment');
 const Modal = require('react-modal');
-import { Button, IButtonState } from '../../button';
 // import { FormattedPlural } from 'react-intl';
 const ReactMapboxGl = require('react-mapbox-gl').default;
 const Layer = require('react-mapbox-gl').Layer;
@@ -12,7 +13,6 @@ const Feature = require('react-mapbox-gl').Feature;
 const location = require('../../img/ego/location-1.svg');
 const calendarAdd = require('../../img/ego/calendar-add.svg');
 const closeHexagon = require('../../img/ego/close-hexagon.svg');
-// const filter = require('../../img/ego/filter-1.svg');
 
 const Map = ReactMapboxGl({
   accessToken: 'pk.eyJ1IjoibGVyZXIwMCIsImEiOiJjamNvNTI3MzkxdmFnMnJuM2licjNsYmM3In0.sR6op3azARBpWg_-JkDf-Q',
@@ -56,7 +56,8 @@ export namespace Default {
 
 export enum ViewMode {
   FORM = 1,
-  LIST = 2
+  LIST = 2,
+  HYBRID = 3,
 }
 
 class Default extends React.Component<Default.Props, Default.State> {
@@ -86,6 +87,14 @@ class Default extends React.Component<Default.Props, Default.State> {
     });
   }
 
+  onMapClick(map: any, event: React.SyntheticEvent<any>) {
+    if (this.state.viewMode === ViewMode.LIST) {
+      this.setState({
+        viewMode: ViewMode.HYBRID
+      });
+    }
+  }
+
   handleDatetimepickerChange(range: any) {
     this.setState({
       datetimepickerRange: range
@@ -105,14 +114,20 @@ class Default extends React.Component<Default.Props, Default.State> {
   }
 
   updateAvailabilities() {
-    if (this.state.viewMode === 1) {
-      this.setState({
-        viewMode: ViewMode.LIST
-      });
-    } else {
-      this.setState({
-        viewMode: ViewMode.FORM
-      });
+    switch (this.state.viewMode) {
+      case ViewMode.FORM:
+      case ViewMode.HYBRID:
+        this.setState({
+          viewMode: ViewMode.LIST
+        });
+        break;
+      case ViewMode.LIST:
+        return;
+      default:
+        this.setState({
+          viewMode: ViewMode.FORM
+        });
+        break;
     }
   }
 
@@ -120,14 +135,23 @@ class Default extends React.Component<Default.Props, Default.State> {
     var datetimepickerRangeText = this.state.datetimepickerRange.startDate.format('dddd, D MMMM YYYY') + ' till ' + this.state.datetimepickerRange.endDate.format('dddd, D MMMM YYYY');
 
     var viewMode = '';
-    if (this.state.viewMode === ViewMode.LIST) {
-      viewMode = 'mode-list';
-    } else {
-      viewMode = 'mode-form';
+    switch (this.state.viewMode) {
+      case ViewMode.LIST:
+        viewMode = 'mode-list';
+        break;
+      case ViewMode.FORM:
+        viewMode = 'mode-form';
+        break;
+      case ViewMode.HYBRID:
+        viewMode = 'mode-hybrid';
+        break;
+      default:
+        viewMode = 'mode-form';
+        break;
     }
 
     return (
-      <div className='default'>
+      <div className='default' >
         <div className='content'>
           <Modal
             isOpen={this.state.datetimepickerVisible}
@@ -182,6 +206,7 @@ class Default extends React.Component<Default.Props, Default.State> {
                 width: '100%'
               }}
               onMove={(map: any, event: React.SyntheticEvent<any>) => { this.onMapMove(map, event); }}
+              onClick={(map: any, event: React.SyntheticEvent<any>) => { this.onMapClick(map, event); }}
               onStyleLoad={(map: any, event: React.SyntheticEvent<any>) => { this.onMapMove(map, event); }}
             >
               <Layer
@@ -201,12 +226,31 @@ class Default extends React.Component<Default.Props, Default.State> {
             </Map>
           </div>
           <div className={`listing ${viewMode}`}>
-            <div className='properties'>
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-              </p>
+            <div className='properties-tiles'>
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
+              <TileProperty />
             </div>
           </div>
           {/* <div className='booking-grid-container'>
