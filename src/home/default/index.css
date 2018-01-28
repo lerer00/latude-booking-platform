@@ -1,21 +1,9 @@
-.default {
-    background-color: transparent;
-}
-
-.default .content {
-    position: relative;
-    width: 1180px;
-    margin: auto;
-    padding: 24px 0;
-    margin: 48px auto;
-}
-
 .default .content .map {
     position: relative;
     width: 100%;
     height: 800px;
     box-shadow: 0 2px 3px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
-    transition: all 1s;
+    transition: all 0.8s;
 }
 
 .default .content .map.mode-list {
@@ -34,6 +22,7 @@
 
 .default .content .filters {
     position: relative;
+    z-index: 2;
 }
 
 .default .content .filters .date-selector {
@@ -44,7 +33,7 @@
     z-index: 1;
     position: absolute;
     top: -32px;
-    left: 15%;
+    left: 18%;
     bottom: auto;
     box-shadow: 0 2px 3px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
     border-radius: 3px;
@@ -52,7 +41,7 @@
 
 .default .content .filters .date-selector .viewer {
     padding: 0 8px;
-    margin-right: 8px;
+    margin: 0 8px;
     border: none;
     outline: 0;
     background-color: transparent;
@@ -85,20 +74,20 @@
     transform: translate(-50%, -50%);
 }
 
-.default .content .filters .update-availabilities-button {
+.default .content .filters .search-properties-button {
     position: absolute;
     top: -56px;
-    left: 66%;
+    left: calc(68% + 16px);
     z-index: 1;
     height: 56px;
 }
 
 .default .content .listing {
-    margin-top: 56px;
     visibility: hidden;
     transition: 1s all;
 }
 
 .default .content .listing.mode-list, .default .content .listing.mode-hybrid {
+    margin-top: 56px;
     visibility: visible;
 }

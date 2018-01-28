@@ -21,7 +21,7 @@
 }
 
 .tile-property .tile-property-grid .tile-property-content .tile-property-name .is-lit {
-    font-size: 0.8em;
+    font-size: 0.7em;
 }
 
 .tile-property .tile-property-grid .tile-property-content .tile-property-description {
@@ -31,7 +31,21 @@
     margin-bottom: 16px;
 }
 
+.tile-property .tile-property-grid .tile-property-content .tile-property-description a {
+    margin-left: 4px;
+    text-decoration: none;
+    color: #399aff;
+    cursor: pointer;
+}
+
+.tile-property .tile-property-grid .tile-property-content .tile-property-description a img {
+    display: inline-block;
+    width: 17px;
+    vertical-align: text-top;
+}
+
 .tile-property .tile-property-grid .tile-property-details {
+    position: relative;
     color: #595959;
     text-align: right;
     line-height: 1.5;
@@ -42,22 +56,36 @@
     margin-bottom: 16px;
 }
 
-.tile-property .tile-property-grid .tile-property-details .tile-property-comments {
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-comments,
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-location,
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-check-availabilities {
+    cursor: pointer;
     color: #a7a7a7;
-    text-decoration: underline
+    text-decoration: underline;
 }
 
-.tile-property .tile-property-grid .tile-property-details .tile-property-comments img{
-    margin: 0 8px;
-    width: 24px;
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-comments > a,
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-location > a,
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-check-availabilities > a {
+    vertical-align: top;
 }
 
-.tile-property .tile-property-grid .tile-property-details .tile-property-location {
-    color: #a7a7a7;
-    text-decoration: underline
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-comments > a span,
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-location > a span,
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-check-availabilities > a span {
+    vertical-align: top;
 }
 
-.tile-property .tile-property-grid .tile-property-details .tile-property-location img{
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-comments img,
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-location img,
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-check-availabilities img
+{
     margin: 0 8px;
     width: 24px;
 }

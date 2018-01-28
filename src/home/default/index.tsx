@@ -51,6 +51,7 @@ export namespace Default {
     datetimepickerRange: any;
     datetimepickerVisible: boolean;
     radiusCenter: Array<number>;
+    mapOptions: any;
   }
 }
 
@@ -68,10 +69,14 @@ class Default extends React.Component<Default.Props, Default.State> {
       viewMode: ViewMode.FORM,
       datetimepickerRange: {
         startDate: moment(),
-        endDate: moment().day(2)
+        endDate: moment().add(2, 'day')
       },
       datetimepickerVisible: false,
       radiusCenter: [0, 0],
+      mapOptions: {
+        zoom: [8],
+        center: [-71.4817734, 46.856283]
+      }
     };
 
     this.handleDatetimepickerChange = this.handleDatetimepickerChange.bind(this);
@@ -150,9 +155,25 @@ class Default extends React.Component<Default.Props, Default.State> {
         break;
     }
 
+    var properties = [];
+    if (this.state.viewMode === ViewMode.HYBRID || this.state.viewMode === ViewMode.LIST) {
+      properties.push(<TileProperty />);
+      properties.push(<TileProperty />);
+      properties.push(<TileProperty />);
+      properties.push(<TileProperty />);
+      properties.push(<TileProperty />);
+      properties.push(<TileProperty />);
+      properties.push(<TileProperty />);
+      properties.push(<TileProperty />);
+      properties.push(<TileProperty />);
+      properties.push(<TileProperty />);
+      properties.push(<TileProperty />);
+      properties.push(<TileProperty />);
+    }
+
     return (
-      <div className='default' >
-        <div className='content'>
+      <div className='route-container default' >
+        <div className=' route-content content'>
           <Modal
             isOpen={this.state.datetimepickerVisible}
             onRequestClose={this.closeDatetimepickerModal}
@@ -160,7 +181,7 @@ class Default extends React.Component<Default.Props, Default.State> {
             contentLabel='Modal'
           >
             <div className='modal-header'>
-              <h1 className='title'>Manage asset</h1>
+              <h1 className='title'>Date Selector</h1>
               <img className='close' src={closeHexagon} onClick={this.closeDatetimepickerModal} />
             </div>
             <div className='modal-content'>
@@ -191,8 +212,8 @@ class Default extends React.Component<Default.Props, Default.State> {
               </button>
             </div>
             <Button
-              id='update-availabilities-button'
-              text='Update availabilities'
+              id='search-properties-button'
+              text='Search properties'
               state={IButtonState.default}
               action={this.updateAvailabilities}
             />
@@ -205,6 +226,8 @@ class Default extends React.Component<Default.Props, Default.State> {
                 height: '100%',
                 width: '100%'
               }}
+              center={this.state.mapOptions.center}
+              zoom={this.state.mapOptions.zoom}
               onMove={(map: any, event: React.SyntheticEvent<any>) => { this.onMapMove(map, event); }}
               onClick={(map: any, event: React.SyntheticEvent<any>) => { this.onMapClick(map, event); }}
               onStyleLoad={(map: any, event: React.SyntheticEvent<any>) => { this.onMapMove(map, event); }}
@@ -227,62 +250,9 @@ class Default extends React.Component<Default.Props, Default.State> {
           </div>
           <div className={`listing ${viewMode}`}>
             <div className='properties-tiles'>
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
-              <TileProperty />
+              {properties}
             </div>
           </div>
-          {/* <div className='booking-grid-container'>
-            <div className='booking-grid-item booking-grid-item-calendar'>
-              <div className='calendar'>
-                <DateRange
-                  calendars={2}
-                  startDate={this.state.dateRange.startDate}
-                  endDate={this.state.dateRange.endDate}
-                  onInit={this.handleDateRangeSelect}
-                  onChange={this.handleDateRangeSelect}
-                />
-              </div>
-            </div>
-            <div className='booking-grid-item'>
-              <div className='filters-results'>
-                <img className='filters-logo' src={filter} />
-                <p className='filters-text'>
-                  You are looking for property in the region of <span className='filter-region'>{'London'}</span>
-                  from <span className='filter-range'>{this.state.dateRange.startDate.format('dddd, D MMMM YYYY')} till {this.state.dateRange.endDate.format('dddd, D MMMM YYYY')}</span>
-                  for a total number of <span className='filter-nights'>
-                    {this.state.dateRange.endDate.diff(this.state.dateRange.startDate, 'days') + ' '}
-                    <FormattedPlural
-                      value={this.state.dateRange.endDate.diff(this.state.dateRange.startDate, 'days')}
-                      one='night'
-                      other='nights'
-                    />
-                  </span>.
-              </p>
-              </div>
-            </div>
-          </div> */}
         </div>
       </div>
     );

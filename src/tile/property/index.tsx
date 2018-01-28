@@ -3,9 +3,12 @@ import '../index.css';
 import './index.css';
 import Rating from '../../rating';
 import { FormattedPlural } from 'react-intl';
+import { NavLink } from 'react-router-dom';
 
 const locationMap = require('../../img/ego/location-map.svg');
 const groupChat = require('../../img/ego/group-chat.svg');
+const calendarCheck = require('../../img/ego/calendar-check-2.svg');
+const arrowNext = require('../../img/ego/arrow-next.svg');
 
 export namespace PropertyTile {
     export interface Props {
@@ -63,25 +66,39 @@ class PropertyTile extends React.Component<PropertyTile.Props, PropertyTile.Stat
                     </div>
                     <div className='tile-property-content'>
                         <h1 className='tile-property-name'>{isLit} {this.props.property.name}</h1>
-                        <p className='tile-property-description'>{this.props.property.description}</p>
+                        <p className='tile-property-description'>
+                            {this.props.property.description}
+                            <NavLink className='link' to='/property'>
+                                more details <img src={arrowNext} />
+                            </NavLink>
+                        </p>
                         <Rating max={5} score={this.props.property.rating} />
                     </div>
                     <div className='tile-property-details'>
                         <p className='tile-property-price'>
                             <span>{this.props.property.price} {this.props.property.currency}</span>
                         </p>
-                        <p className='tile-property-comments'>
-                            {this.props.property.comments.length}&nbsp;
-                            <FormattedPlural
-                                value={this.props.property.comments.length}
-                                one='comment'
-                                other='comments'
-                            />
-                            <img src={groupChat} />
-                        </p>
-                        <p className='tile-property-location'>
-                            <span>See on map<img src={locationMap} /></span>
-                        </p>
+                        <div className='tile-property-actions'>
+                            <p className='tile-property-comments'>
+                                <a>
+                                    {this.props.property.comments.length}&nbsp;
+                                    <FormattedPlural
+                                        value={this.props.property.comments.length}
+                                        one='comment'
+                                        other='comments'
+                                    />
+                                </a>
+                                <img src={groupChat} />
+                            </p>
+                            <p className='tile-property-location'>
+                                <a>see on map</a>
+                                <img src={locationMap} />
+                            </p>
+                            <p className='tile-property-check-availabilities'>
+                                <a>check rooms</a>
+                                <img src={calendarCheck} />
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

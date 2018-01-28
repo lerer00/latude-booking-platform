@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Header from '../header';
 import Footer from '../footer';
 import Default from './default';
+import Property from '../property';
 import './index.css';
 
 export namespace Home {
@@ -26,6 +27,7 @@ class Home extends React.Component<Home.Props, Home.State> {
         <Header />
         <Switch>
           <Route exact={true} path='/' component={Default} />
+          <Route exact={true} path='/property' component={Property} />
         </Switch>
         <Footer />
       </div>
