@@ -1,16 +1,19 @@
 import * as React from 'react';
+import axios, { AxiosResponse } from 'axios';
 import './index.css';
 import TileProperty from '../../tile/property';
 import { Button, IButtonState } from '../../button';
+import IProperty from '../../model/property';
 
 const DateRange = require('react-date-range').DateRange;
 const moment = require('moment');
 const Modal = require('react-modal');
-// import { FormattedPlural } from 'react-intl';
 const ReactMapboxGl = require('react-mapbox-gl').default;
-const Layer = require('react-mapbox-gl').Layer;
-const Feature = require('react-mapbox-gl').Feature;
+// const Layer = require('react-mapbox-gl').Layer;
+// const Feature = require('react-mapbox-gl').Feature;
+const Marker = require('react-mapbox-gl').Marker;
 const location = require('../../img/ego/location-1.svg');
+const building = require('../../img/ego/building-1.svg');
 const calendarAdd = require('../../img/ego/calendar-add.svg');
 const closeHexagon = require('../../img/ego/close-hexagon.svg');
 
@@ -52,6 +55,7 @@ export namespace Default {
     datetimepickerVisible: boolean;
     radiusCenter: Array<number>;
     mapOptions: any;
+    propertiesList: Array<IProperty>;
   }
 }
 
@@ -76,7 +80,8 @@ class Default extends React.Component<Default.Props, Default.State> {
       mapOptions: {
         zoom: [8],
         center: [-71.4817734, 46.856283]
-      }
+      },
+      propertiesList: []
     };
 
     this.handleDatetimepickerChange = this.handleDatetimepickerChange.bind(this);
@@ -119,6 +124,22 @@ class Default extends React.Component<Default.Props, Default.State> {
   }
 
   updateAvailabilities() {
+    this.updateViewMode();
+
+    axios.get('http://localhost:3001/properties', {
+      params: {
+        center: JSON.stringify(this.state.radiusCenter)
+      }
+    }).then((response: AxiosResponse<Array<IProperty>>) => {
+      this.setState({
+        propertiesList: response.data
+      });
+    }).catch((error: any) => {
+      console.log(error);
+    });
+  }
+
+  updateViewMode() {
     switch (this.state.viewMode) {
       case ViewMode.FORM:
       case ViewMode.HYBRID:
@@ -155,20 +176,20 @@ class Default extends React.Component<Default.Props, Default.State> {
         break;
     }
 
-    var properties = [];
+    var properties: any = [];
+    var markers: any = [];
     if (this.state.viewMode === ViewMode.HYBRID || this.state.viewMode === ViewMode.LIST) {
-      properties.push(<TileProperty />);
-      properties.push(<TileProperty />);
-      properties.push(<TileProperty />);
-      properties.push(<TileProperty />);
-      properties.push(<TileProperty />);
-      properties.push(<TileProperty />);
-      properties.push(<TileProperty />);
-      properties.push(<TileProperty />);
-      properties.push(<TileProperty />);
-      properties.push(<TileProperty />);
-      properties.push(<TileProperty />);
-      properties.push(<TileProperty />);
+      this.state.propertiesList.map((property, index) => {
+        properties.push(<TileProperty property={property} />);
+        markers.push(
+          <Marker
+            key={index}
+            coordinates={property.location.coordinates}
+            anchor='bottom'
+          >
+            <img className='marker' src={building} />
+          </Marker>);
+      });
     }
 
     return (
@@ -232,7 +253,7 @@ class Default extends React.Component<Default.Props, Default.State> {
               onClick={(map: any, event: React.SyntheticEvent<any>) => { this.onMapClick(map, event); }}
               onStyleLoad={(map: any, event: React.SyntheticEvent<any>) => { this.onMapMove(map, event); }}
             >
-              <Layer
+              {/* <Layer
                 id='radius'
                 type='circle'
                 paint={{
@@ -245,7 +266,8 @@ class Default extends React.Component<Default.Props, Default.State> {
                 }}
               >
                 <Feature coordinates={this.state.radiusCenter} />
-              </Layer>
+              </Layer> */}
+              {markers}
             </Map>
           </div>
           <div className={`listing ${viewMode}`}>

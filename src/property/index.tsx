@@ -18,7 +18,7 @@ class Property extends React.Component<Property.Props, Property.State> {
 
     render() {
         return (
-            <div className='route-conteiner property'>
+            <div className='route-container property'>
                 <div className='route-content content'>
                     <h1>asd</h1>
                 </div>
