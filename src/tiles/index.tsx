@@ -4,6 +4,7 @@ import './index.css';
 export namespace Tiles {
     export interface Props {
         list: Array<any>;
+        empty: any;
     }
 
     export interface State {
@@ -17,10 +18,17 @@ class Tiles extends React.Component<Tiles.Props, Tiles.State> {
     }
 
     render() {
+        var items: any;
+        if (this.props.list.length <= 0) {
+            items = this.props.empty;
+        } else {
+            items = this.props.list;
+        }
+
         return (
             <div className='tiles'>
                 <div className='content'>
-                    <h1>OK</h1>
+                    {items}
                 </div>
             </div>
         );

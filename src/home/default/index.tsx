@@ -1,6 +1,7 @@
 import * as React from 'react';
 import axios, { AxiosResponse } from 'axios';
 import './index.css';
+import Tiles from '../../tiles';
 import TileProperty from '../../tile/property';
 import { Button, IButtonState } from '../../button';
 import IProperty from '../../model/property';
@@ -9,11 +10,13 @@ const DateRange = require('react-date-range').DateRange;
 const moment = require('moment');
 const Modal = require('react-modal');
 const ReactMapboxGl = require('react-mapbox-gl').default;
-// const Layer = require('react-mapbox-gl').Layer;
-// const Feature = require('react-mapbox-gl').Feature;
+const Layer = require('react-mapbox-gl').Layer;
+const Feature = require('react-mapbox-gl').Feature;
 const Marker = require('react-mapbox-gl').Marker;
+const Cluster = require('react-mapbox-gl').Cluster;
 const location = require('../../img/ego/location-1.svg');
-const building = require('../../img/ego/building-1.svg');
+const locations = require('../../img/ego/locations.svg');
+const locationPin = require('../../img/ego/location-pin-1.svg');
 const calendarAdd = require('../../img/ego/calendar-add.svg');
 const closeHexagon = require('../../img/ego/close-hexagon.svg');
 
@@ -53,6 +56,7 @@ export namespace Default {
     viewMode: ViewMode;
     datetimepickerRange: any;
     datetimepickerVisible: boolean;
+    isTargetVisible: boolean;
     radiusCenter: Array<number>;
     mapOptions: any;
     propertiesList: Array<IProperty>;
@@ -76,6 +80,7 @@ class Default extends React.Component<Default.Props, Default.State> {
         endDate: moment().add(2, 'day')
       },
       datetimepickerVisible: false,
+      isTargetVisible: true,
       radiusCenter: [0, 0],
       mapOptions: {
         zoom: [8],
@@ -88,6 +93,7 @@ class Default extends React.Component<Default.Props, Default.State> {
     this.openDatetimepickerModal = this.openDatetimepickerModal.bind(this);
     this.closeDatetimepickerModal = this.closeDatetimepickerModal.bind(this);
     this.updateAvailabilities = this.updateAvailabilities.bind(this);
+    this.handleIsTargetVisible = this.handleIsTargetVisible.bind(this);
   }
 
   onMapMove(map: any, event: React.SyntheticEvent<any>) {
@@ -132,10 +138,18 @@ class Default extends React.Component<Default.Props, Default.State> {
       }
     }).then((response: AxiosResponse<Array<IProperty>>) => {
       this.setState({
+        isTargetVisible: false,
         propertiesList: response.data
       });
     }).catch((error: any) => {
       console.log(error);
+    });
+  }
+
+  handleIsTargetVisible() {
+    console.log(this.state.isTargetVisible);
+    this.setState({
+      isTargetVisible: !this.state.isTargetVisible
     });
   }
 
@@ -157,6 +171,12 @@ class Default extends React.Component<Default.Props, Default.State> {
     }
   }
 
+  clusterMarker = (coordinates: any) => (
+    <Marker coordinates={coordinates}>
+      <img className='marker' src={locations} />
+    </Marker>
+  )
+
   render() {
     var datetimepickerRangeText = this.state.datetimepickerRange.startDate.format('dddd, D MMMM YYYY') + ' till ' + this.state.datetimepickerRange.endDate.format('dddd, D MMMM YYYY');
 
@@ -176,21 +196,34 @@ class Default extends React.Component<Default.Props, Default.State> {
         break;
     }
 
+    var emptyProperties = <h1>OK</h1>;
     var properties: any = [];
     var markers: any = [];
     if (this.state.viewMode === ViewMode.HYBRID || this.state.viewMode === ViewMode.LIST) {
       this.state.propertiesList.map((property, index) => {
         properties.push(<TileProperty property={property} />);
-        markers.push(
-          <Marker
-            key={index}
-            coordinates={property.location.coordinates}
-            anchor='bottom'
-          >
-            <img className='marker' src={building} />
-          </Marker>);
       });
     }
+
+    var radiusOptions: any = {};
+    if (this.state.isTargetVisible) {
+      radiusOptions.circleFillOpacity = 0.2;
+      radiusOptions.circleStrokeWidth = 1.4;
+    } else {
+      radiusOptions.circleFillOpacity = 0;
+      radiusOptions.circleStrokeWidth = 0;
+    }
+
+    this.state.propertiesList.map((property, index) => {
+      markers.push(
+        <Marker
+          key={index}
+          coordinates={property.location.coordinates}
+          anchor='bottom'
+        >
+          <img className='marker' src={locationPin} />
+        </Marker>);
+    });
 
     return (
       <div className='route-container default' >
@@ -240,7 +273,12 @@ class Default extends React.Component<Default.Props, Default.State> {
             />
           </div>
           <div className={`map ${viewMode}`}>
-            <img className='location' src={location} />
+            {this.state.isTargetVisible && <img className='location' src={location} />}
+            <form className='toggle-target'>
+              <label htmlFor='toggle'>
+                <input type='checkbox' id='toggle' checked={this.state.isTargetVisible} onChange={this.handleIsTargetVisible} /> toggle target
+              </label>
+            </form>
             <Map
               style='mapbox://styles/mapbox/streets-v9'
               containerStyle={{
@@ -253,26 +291,31 @@ class Default extends React.Component<Default.Props, Default.State> {
               onClick={(map: any, event: React.SyntheticEvent<any>) => { this.onMapClick(map, event); }}
               onStyleLoad={(map: any, event: React.SyntheticEvent<any>) => { this.onMapMove(map, event); }}
             >
-              {/* <Layer
+              <Layer
                 id='radius'
                 type='circle'
                 paint={{
                   'circle-radius': 100,
                   'circle-color': '#ffffff',
-                  'circle-opacity': 0.3,
+                  'circle-opacity': radiusOptions.circleFillOpacity,
                   'circle-pitch-alignment': 'map',
-                  'circle-stroke-width': 1.5,
+                  'circle-stroke-width': radiusOptions.circleStrokeWidth,
                   'circle-stroke-color': '#399aff'
                 }}
               >
                 <Feature coordinates={this.state.radiusCenter} />
-              </Layer> */}
-              {markers}
+              </Layer>
+              <Cluster ClusterMarkerFactory={this.clusterMarker}>
+                {
+                  markers
+                }
+              </Cluster>
             </Map>
           </div>
           <div className={`listing ${viewMode}`}>
             <div className='properties-tiles'>
-              {properties}
+              <Tiles list={properties} empty={emptyProperties} />
+              {/* {properties} */}
             </div>
           </div>
         </div>
