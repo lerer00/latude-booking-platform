@@ -19,6 +19,7 @@ const locations = require('../../img/ego/locations.svg');
 const locationPin = require('../../img/ego/location-pin-1.svg');
 const calendarAdd = require('../../img/ego/calendar-add.svg');
 const closeHexagon = require('../../img/ego/close-hexagon.svg');
+const emptyList = require('../../img/ego/close-box-2.svg');
 
 const Map = ReactMapboxGl({
   accessToken: 'pk.eyJ1IjoibGVyZXIwMCIsImEiOiJjamNvNTI3MzkxdmFnMnJuM2licjNsYmM3In0.sR6op3azARBpWg_-JkDf-Q',
@@ -196,7 +197,17 @@ class Default extends React.Component<Default.Props, Default.State> {
         break;
     }
 
-    var emptyProperties = <h1>OK</h1>;
+    var emptyProperties = (
+      <div className='tile tile-empty'>
+        <div>
+          <img src={emptyList} className='tile-empty-image' />
+        </div>
+        <div className='tile-empty-content'>
+          <h1 className='tile-empty-content-title'>Nothing...</h1>
+          <p className='tile-empty-content-message'>There's no property found in regard to your criteria.</p>
+        </div>
+      </div>
+    );
     var properties: any = [];
     var markers: any = [];
     if (this.state.viewMode === ViewMode.HYBRID || this.state.viewMode === ViewMode.LIST) {

@@ -5,5 +5,29 @@
     padding: 16px;
     margin-bottom: 16px;
     width: 100%;
-    box-shadow: 0 2px 3px rgba(50,50,93,.11), 0 1px 3px rgba(0,0,0,.08);
+    box-shadow: 0 2px 3px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+}
+
+.tile.tile-empty {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 24px;
+}
+
+.tile.tile-empty .tile-empty-image {
+    float: right;
+    width: 100px;
+}
+
+.tile.tile-empty .tile-empty-content{
+    color: #8c8c8c;
+}
+
+.tile.tile-empty .tile-empty-content .tile-empty-content-title{
+    font-size: 3em;
+    margin-bottom: 16px;
+}
+
+.tile.tile-empty .tile-empty-content .tile-empty-content-message{
+    font-size: 1em;
 }
