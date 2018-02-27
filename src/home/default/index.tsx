@@ -133,7 +133,7 @@ class Default extends React.Component<Default.Props, Default.State> {
   updateAvailabilities() {
     this.updateViewMode();
 
-    axios.get('http://localhost:3001/properties', {
+    axios.get(process.env.REACT_APP_HUB_URL + '/properties', {
       params: {
         center: JSON.stringify(this.state.radiusCenter)
       }
