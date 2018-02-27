@@ -22,7 +22,7 @@ const closeHexagon = require('../../img/ego/close-hexagon.svg');
 const emptyList = require('../../img/ego/close-box-2.svg');
 
 const Map = ReactMapboxGl({
-  accessToken: 'pk.eyJ1IjoibGVyZXIwMCIsImEiOiJjamNvNTI3MzkxdmFnMnJuM2licjNsYmM3In0.sR6op3azARBpWg_-JkDf-Q',
+  accessToken: process.env.REACT_APP_MAPBOX_TOKEN,
   attributionControl: false,
   logoPosition: 'top-left'
 });
