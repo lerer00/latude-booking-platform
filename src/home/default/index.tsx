@@ -21,6 +21,7 @@ const calendarAdd = require('../../img/ego/calendar-add.svg');
 const closeHexagon = require('../../img/ego/close-hexagon.svg');
 const emptyList = require('../../img/ego/close-box-2.svg');
 
+console.log(process.env);
 const Map = ReactMapboxGl({
   accessToken: process.env.REACT_APP_MAPBOX_TOKEN,
   attributionControl: false,
