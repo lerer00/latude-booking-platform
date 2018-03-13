@@ -1,9 +1,10 @@
 import * as React from 'react';
 import axios, { AxiosResponse } from 'axios';
 import './index.css';
-import Tiles from '../../tiles';
-import TileProperty from '../../tile/property';
-import { Button, IButtonState } from '../../button';
+import Tiles from '../../components/tiles';
+import TileProperty from '../../components/tile/property';
+import { Button, IButtonState } from '../../components/button';
+import { location, locations, locationPin, calendarAdd, closeHexagon, cursorHand } from '../../img/index';
 import IProperty from '../../model/property';
 
 const DateRange = require('react-date-range').DateRange;
@@ -14,12 +15,6 @@ const Layer = require('react-mapbox-gl').Layer;
 const Feature = require('react-mapbox-gl').Feature;
 const Marker = require('react-mapbox-gl').Marker;
 const Cluster = require('react-mapbox-gl').Cluster;
-const location = require('../../img/ego/location-1.svg');
-const locations = require('../../img/ego/locations.svg');
-const locationPin = require('../../img/ego/location-pin-1.svg');
-const calendarAdd = require('../../img/ego/calendar-add.svg');
-const closeHexagon = require('../../img/ego/close-hexagon.svg');
-const emptyList = require('../../img/ego/close-box-2.svg');
 
 const Map = ReactMapboxGl({
   accessToken: process.env.REACT_APP_MAPBOX_TOKEN,
@@ -200,7 +195,7 @@ class Default extends React.Component<Default.Props, Default.State> {
     var emptyProperties = (
       <div className='tile tile-empty'>
         <div>
-          <img src={emptyList} className='tile-empty-image' />
+          <img src={cursorHand} className='tile-empty-image' />
         </div>
         <div className='tile-empty-content'>
           <h1 className='tile-empty-content-title'>Nothing...</h1>
@@ -250,11 +245,11 @@ class Default extends React.Component<Default.Props, Default.State> {
               <img className='close' src={closeHexagon} onClick={this.closeDatetimepickerModal} />
             </div>
             <div className='modal-content'>
-              <img className='visual-tip' src={calendarAdd} />
-              <p>
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+              <div className='visual-tip'>
+                <img className='tip' src={calendarAdd} />
+              </div>
+              <p className='description'>
+                Choose the first and last night of your stay with the below calendar. Note that the last night is included.
               </p>
               <DateRange
                 calendars={1}
@@ -265,7 +260,7 @@ class Default extends React.Component<Default.Props, Default.State> {
               />
             </div>
             <div className='modal-actions'>
-              <button className='action' onClick={this.closeDatetimepickerModal}>Save</button>
+              <button className='button' onClick={this.closeDatetimepickerModal}>Save</button>
               <button className='action close' onClick={this.closeDatetimepickerModal}>Close</button>
             </div>
           </Modal>
@@ -277,7 +272,6 @@ class Default extends React.Component<Default.Props, Default.State> {
               </button>
             </div>
             <Button
-              id='search-properties-button'
               text='Search properties'
               state={IButtonState.default}
               action={this.updateAvailabilities}

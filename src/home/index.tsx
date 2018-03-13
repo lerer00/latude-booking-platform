@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Header from '../header';
-import Footer from '../footer';
+import Header from '../layouts/header';
+import Footer from '../layouts/footer';
 import Default from './default';
-import Property from '../property';
+import Property from '../components/property';
 import './index.css';
 
 export namespace Home {

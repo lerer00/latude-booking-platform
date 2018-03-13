@@ -12,16 +12,17 @@ export namespace Header {
 }
 
 class Header extends React.Component<Header.Props, Header.State> {
-    constructor() {
-        super();
+    constructor(props?: Header.Props, context?: any) {
+        super(props, context);
     }
-
     render() {
         return (
             <header className='header'>
-                <div className='content'>
-                    <h1 className='title'>latude</h1>
-                    <p className='subtitle'>booking</p>
+                <div className='container'>
+                    <div className='left content'>
+                        <h1 className='title'>latude</h1>
+                        <p className='subtitle'>booking</p>
+                    </div>
                 </div>
             </header>
         );

@@ -2,14 +2,10 @@ import * as React from 'react';
 import '../index.css';
 import './index.css';
 import Rating from '../../rating';
-import IProperty from '../../model/property';
+import IProperty from '../../../model/property';
 import { FormattedPlural } from 'react-intl';
 import { NavLink } from 'react-router-dom';
-
-const locationMap = require('../../img/ego/location-map.svg');
-const groupChat = require('../../img/ego/group-chat.svg');
-const calendarCheck = require('../../img/ego/calendar-check-2.svg');
-const arrowNext = require('../../img/ego/arrow-next.svg');
+import { locationMap, groupChat, calendarCheck, arrowNext } from '../../../img/index';
 
 export namespace PropertyTile {
     export interface Props {

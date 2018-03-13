@@ -108,9 +108,9 @@
     transform: translate(-50%, -50%);
 }
 
-.default .content .filters .search-properties-button {
+.default .content .filters .button {
     position: absolute;
-    top: -56px;
+    top: -32px;
     left: calc(68% + 16px);
     z-index: 1;
     height: 56px;

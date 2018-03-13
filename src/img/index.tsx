@@ -1,0 +1,13 @@
+export const arrowNext = require('./ego/arrow-next.svg');
+export const building = require('./ego/building-1.svg');
+export const calendarAdd = require('./ego/calendar-add.svg');
+export const calendarCheck = require('./ego/calendar-check-2.svg');
+export const closeHexagon = require('./ego/close-hexagon.svg');
+export const cursorHand = require('./ego/cursor-hand.svg');
+export const groupChat = require('./ego/group-chat.svg');
+export const location = require('./ego/location-1.svg');
+export const locationMap = require('./ego/location-map.svg');
+export const locationPin = require('./ego/location-pin-1.svg');
+export const locations = require('./ego/locations.svg');
+export const starFull = require('./ego/star-full.svg');
+export const starHalf = require('./ego/star-half.svg');
