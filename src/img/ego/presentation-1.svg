@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <title>presentation-1</title>
+  <g id="Duotone">
+    <polygon points="22.5 0.5 0.5 0.5 0.5 16.5 7.3 16.5 8 23.5 15 23.5 15.7 16.5 22.5 16.5 22.5 0.5" fill="#fff"/>
+    <polygon points="11.5 13.5 15 13.5 14.75 12.25 14.5 11 11.5 10 11.5 13.5" fill="#cce7ff"/>
+    <polygon points="11.5 4.5 13.5 5.5 13.5 8 11.5 9 11.5 4.5" fill="#cce7ff"/>
+    <polygon points="13.5 7.045 13.5 8 11.5 9 11.093 8.796 0.5 16.5 7.3 16.5 7 13.5 8 13.5 8.5 11 11.5 10 14.5 11 15 13.5 16 13.5 15.7 16.5 22.5 16.5 22.5 0.5 13.5 7.045" fill="#cce7ff"/>
+    <rect x="10.439" y="16.939" width="2.121" height="2.121" transform="translate(-9.36 13.404) rotate(-45)" fill="#cce7ff"/>
+    <polyline points="4.5 16.5 0.5 16.5 0.5 0.5 22.5 0.5 22.5 16.5 18.5 16.5" fill="none" stroke="#1078ff" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="16 13.5 7 13.5 8 23.5 15 23.5 16 13.5" fill="none" stroke="#1078ff" stroke-linecap="round" stroke-linejoin="round"/>
+    <polygon points="13.5 8 11.5 9 9.5 8 9.5 5.5 11.5 4.5 13.5 5.5 13.5 8" fill="none" stroke="#1078ff" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="10.439" y="16.939" width="2.121" height="2.121" transform="translate(-9.36 13.404) rotate(-45)" fill="none" stroke="#1078ff" stroke-linecap="round" stroke-linejoin="round"/>
+    <line x1="5.5" y1="13.5" x2="17.5" y2="13.5" fill="none" stroke="#1078ff" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="4.5 16.5 0.5 16.5 0.5 0.5 22.5 0.5 22.5 16.5 18.5 16.5" fill="none" stroke="#1078ff" stroke-linecap="round" stroke-linejoin="round"/>
+    <polyline points="15 13.5 14.5 11 11.5 10 8.5 11 8 13.5" fill="none" stroke="#1078ff" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <g id="Frames-24px">
+    <rect width="24" height="24" fill="none"/>
+  </g>
+</svg>

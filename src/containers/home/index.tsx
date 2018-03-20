@@ -43,7 +43,7 @@ const datetimepickerModalStyles = {
   }
 };
 
-export namespace Default {
+export namespace Home {
   export interface Props {
     // empty
   }
@@ -65,8 +65,8 @@ export enum ViewMode {
   HYBRID = 3,
 }
 
-class Default extends React.Component<Default.Props, Default.State> {
-  constructor(props?: Default.Props, context?: any) {
+class Home extends React.Component<Home.Props, Home.State> {
+  constructor(props?: Home.Props, context?: any) {
     super(props, context);
 
     this.state = {
@@ -199,7 +199,7 @@ class Default extends React.Component<Default.Props, Default.State> {
         </div>
         <div className='tile-empty-content'>
           <h1 className='tile-empty-content-title'>Nothing...</h1>
-          <p className='tile-empty-content-message'>There's no property found in regard to your criteria.</p>
+          <p className='tile-empty-content-message'>There's no property found in regard to your criteria. Please select another region. Since we are on a test network not every city are populated.</p>
         </div>
       </div>
     );
@@ -329,4 +329,4 @@ class Default extends React.Component<Default.Props, Default.State> {
   }
 }
 
-export default Default;
+export default Home;

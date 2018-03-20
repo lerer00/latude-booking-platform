@@ -57,7 +57,7 @@ class PropertyTile extends React.Component<PropertyTile.Props, PropertyTile.Stat
                         <h1 className='tile-property-name'>{isLit} {this.props.property.name}</h1>
                         <p className='tile-property-description'>
                             {this.props.property.description}
-                            <NavLink className='link' to='/property'>
+                            <NavLink className='link' to={'/properties/' + this.props.property.id} >
                                 more details <img src={arrowNext} />
                             </NavLink>
                         </p>
