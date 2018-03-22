@@ -27,7 +27,7 @@ class Tiles extends React.Component<Tiles.Props, Tiles.State> {
 
         return (
             <div className='tiles'>
-                <div className='content'>
+                <div className='container'>
                     {items}
                 </div>
             </div>

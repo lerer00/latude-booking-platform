@@ -1,9 +1,18 @@
 import * as React from 'react';
 import './index.css';
 import axios, { AxiosResponse } from 'axios';
-import { bookShelf, computerPc, disableSign, forkSpoon, lockKey, networkWifiSignal, petAllow, presentation, smokeFreeArea } from '../../img/index';
+import {
+    bookShelf, computerPc, disableSign, forkSpoon,
+    lockKey, networkWifiSignal, petAllow, presentation,
+    smokeFreeArea, locations, locationPin, cursorHand
+} from '../../img/index';
+import Tiles from '../../components/tiles';
+import TileAsset from '../../components/tile/asset';
 import IProperty from '../../model/property';
+import IAsset from '../../model/asset';
 
+const Marker = require('react-mapbox-gl').Marker;
+const Cluster = require('react-mapbox-gl').Cluster;
 const ReactMapboxGl = require('react-mapbox-gl').default;
 const Map = ReactMapboxGl({
     accessToken: process.env.REACT_APP_MAPBOX_TOKEN,
@@ -18,6 +27,7 @@ export namespace Property {
 
     export interface State {
         property: IProperty;
+        assets: Array<IAsset>;
         mapOptions: any;
     }
 }
@@ -40,6 +50,7 @@ class Property extends React.Component<Property.Props, Property.State> {
                 comments: [],
                 parent: ''
             },
+            assets: [],
             mapOptions: {
                 zoom: [8],
                 center: [0, 0]
@@ -50,14 +61,56 @@ class Property extends React.Component<Property.Props, Property.State> {
     componentWillMount() {
         axios.get(process.env.REACT_APP_HUB_URL + '/properties/' + this.props.match.params.pid).then((response: AxiosResponse<IProperty>) => {
             this.setState({
+                mapOptions: {
+                    center: response.data.location.coordinates
+                },
                 property: response.data
+            });
+
+            return axios.get(process.env.REACT_APP_HUB_URL + '/assets');
+        }).then((response) => {
+            this.setState({
+                assets: response.data
             });
         }).catch((error: any) => {
             console.log(error);
         });
     }
 
+    clusterMarker = (coordinates: any) => (
+        <Marker coordinates={coordinates}>
+            <img className='marker' src={locations} />
+        </Marker>
+    )
+
     render() {
+        var markers: any = [];
+        markers.push(
+            <Marker
+                key={0}
+                coordinates={this.state.property.location.coordinates}
+                anchor='bottom'
+            >
+                <img className='marker' src={locationPin} />
+            </Marker>);
+
+        var assets: any = [];
+        this.state.assets.forEach((asset) => {
+            assets.push(<TileAsset key={asset.id} asset={asset} />);
+        });
+
+        var emptyAssets = (
+            <div className='tile tile-empty'>
+              <div>
+                <img src={cursorHand} className='tile-empty-image' />
+              </div>
+              <div className='tile-empty-content'>
+                <h1 className='tile-empty-content-title'>Nothing...</h1>
+                <p className='tile-empty-content-message'>There's no asset found within this property.</p>
+              </div>
+            </div>
+          );
+
         return (
             <div className='route-container property'>
                 <div className='route-content content'>
@@ -134,7 +187,19 @@ class Property extends React.Component<Property.Props, Property.State> {
                                 }}
                                 center={this.state.mapOptions.center}
                                 zoom={this.state.mapOptions.zoom}
-                            />
+                            >
+                                <Cluster ClusterMarkerFactory={this.clusterMarker}>
+                                    {
+                                        markers
+                                    }
+                                </Cluster>
+                            </Map>
+                        </div>
+                    </div>
+                    <div className='assets'>
+                        <h1 className='title'>Assets</h1>
+                        <div className='assets-list'>
+                        <Tiles list={assets} empty={emptyAssets} />
                         </div>
                     </div>
                 </div>
