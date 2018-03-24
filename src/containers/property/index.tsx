@@ -101,15 +101,15 @@ class Property extends React.Component<Property.Props, Property.State> {
 
         var emptyAssets = (
             <div className='tile tile-empty'>
-              <div>
-                <img src={cursorHand} className='tile-empty-image' />
-              </div>
-              <div className='tile-empty-content'>
-                <h1 className='tile-empty-content-title'>Nothing...</h1>
-                <p className='tile-empty-content-message'>There's no asset found within this property.</p>
-              </div>
+                <div>
+                    <img src={cursorHand} className='tile-empty-image' />
+                </div>
+                <div className='tile-empty-content'>
+                    <h1 className='tile-empty-content-title'>Nothing...</h1>
+                    <p className='tile-empty-content-message'>There's no asset found within this property.</p>
+                </div>
             </div>
-          );
+        );
 
         return (
             <div className='route-container property'>
@@ -143,7 +143,7 @@ class Property extends React.Component<Property.Props, Property.State> {
                             </li>
                             <li className='ammenity'>
                                 <img src={networkWifiSignal} />
-                                <span>wifi available</span>
+                                <span>Wifi available</span>
                             </li>
                             <li className='ammenity'>
                                 <img src={petAllow} />
@@ -199,7 +199,7 @@ class Property extends React.Component<Property.Props, Property.State> {
                     <div className='assets'>
                         <h1 className='title'>Assets</h1>
                         <div className='assets-list'>
-                        <Tiles list={assets} empty={emptyAssets} />
+                            <Tiles list={assets} empty={emptyAssets} />
                         </div>
                     </div>
                 </div>

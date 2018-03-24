@@ -20,3 +20,7 @@ export const networkWifiSignal = require('./ego/network-wifi-signal.svg');
 export const petAllow = require('./ego/pet-allow.svg');
 export const presentation = require('./ego/presentation-1.svg');
 export const smokeFreeArea = require('./ego/smoke-free-area.svg');
+export const person = require('./ego/person.svg');
+export const bedDouble = require('./ego/bed-double.svg');
+export const bedSingle = require('./ego/bed-single.svg');
+export const couch = require('./ego/couch.svg');

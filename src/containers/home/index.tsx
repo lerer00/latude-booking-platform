@@ -232,7 +232,7 @@ class Home extends React.Component<Home.Props, Home.State> {
     });
 
     return (
-      <div className='route-container default' >
+      <div className='route-container default-route' >
         <div className=' route-content content'>
           <Modal
             isOpen={this.state.datetimepickerVisible}
@@ -320,7 +320,6 @@ class Home extends React.Component<Home.Props, Home.State> {
           <div className={`listing ${viewMode}`}>
             <div className='properties-tiles'>
               <Tiles list={properties} empty={emptyProperties} />
-              {/* {properties} */}
             </div>
           </div>
         </div>

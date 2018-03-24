@@ -1,1 +1,76 @@
-/* TODO */
+.tile-asset .tile-asset-grid {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr;
+    width: 100%;
+    grid-gap: 16px;
+}
+
+.tile-asset .tile-asset-grid .sleep, .tile-asset .tile-asset-grid .availability {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    box-sizing: border-box;
+    margin: 8px;
+}
+
+.tile-asset .tile-asset-grid .sleep {
+    flex-direction: column;
+    text-align: center;
+}
+
+.tile-asset .tile-asset-grid .sleep .detail img {
+    height: 24px;
+}
+
+.tile-asset .tile-asset-grid .information {
+    box-sizing: border-box;
+    margin: 8px;
+    grid-column: 2 / 5;
+}
+
+.tile-asset .tile-asset-grid .information .name {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.tile-asset .tile-asset-grid .information .description {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #a7a7a7;
+}
+
+.tile-asset .tile-asset-grid .availability {
+    flex-direction: column;
+    text-align: center;
+}
+
+.tile-asset .tile-asset-grid .availability .no-vacancy {
+    font-size: 18px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.tile-asset .tile-asset-grid .availability .no-vacancy::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 14px;
+    height: 14px;
+    margin-right: 4px;
+    background-color: #f4511e;
+}
+
+.tile-asset .tile-asset-grid .availability .price {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.tile-asset .tile-asset-grid .availability .currency {
+    font-size: 18px;
+    color: #a7a7a7;
+}
+
+.tile-asset .tile-asset-grid .availability .book-button {
+    width: 100%;
+}

@@ -29,7 +29,7 @@ export enum IButtonState {
     info = 4
 }
 
-export class Button extends React.Component<Button.Props, Button.State> {
+export class Button extends React.Component<Button.Props & React.HTMLAttributes<HTMLDivElement>, Button.State> {
     constructor(props?: Button.Props, context?: Button.Context) {
         super(props, context);
 
@@ -64,7 +64,7 @@ export class Button extends React.Component<Button.Props, Button.State> {
         }
 
         return (
-            <button className={wantedStyles} onClick={() => this.executeAction()}>
+            <button className={`${wantedStyles} ${this.props.className}`} onClick={() => this.executeAction()}>
                 <span className='button-text'>{this.props.text}</span>
             </button>
         );
