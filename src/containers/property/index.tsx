@@ -8,8 +8,8 @@ import {
 } from '../../img/index';
 import Tiles from '../../components/tiles';
 import TileAsset from '../../components/tile/asset';
-import IProperty from '../../model/property';
-import IAsset from '../../model/asset';
+import { IProperty } from '../../model/property';
+import { IAsset } from '../../model/asset';
 
 const Marker = require('react-mapbox-gl').Marker;
 const Cluster = require('react-mapbox-gl').Cluster;
@@ -39,16 +39,45 @@ class Property extends React.Component<Property.Props, Property.State> {
         this.state = {
             property: {
                 id: '',
-                active: false,
-                location: {
-                    coordinates: [0, 0],
-                    type: ''
-                },
                 name: '',
                 description: '',
                 rating: 0,
                 comments: [],
-                parent: ''
+                amenities: {
+                    accessibility: {
+                        value: false
+                    },
+                    computers: {
+                        value: false
+                    },
+                    conferenceVenues: {
+                        value: false
+                    },
+                    library: {
+                        value: false
+                    },
+                    lockers: {
+                        value: false
+                    },
+                    pet: {
+                        value: false
+                    },
+                    restaurants: {
+                        value: false
+                    },
+                    smoking: {
+                        value: false
+                    },
+                    wifi: {
+                        value: false
+                    }
+                },
+                active: false,
+                parent: '',
+                location: {
+                    coordinates: [0, 0],
+                    type: ''
+                }
             },
             assets: [],
             mapOptions: {
@@ -118,45 +147,62 @@ class Property extends React.Component<Property.Props, Property.State> {
                         <h1 className='name'>{this.state.property.name}</h1>
                         <h2 className='description'>{this.state.property.description}</h2>
                     </div>
-                    <div className='ammenities'>
-                        <h1 className='title'>Ammenities</h1>
+                    <div className='amenities'>
+                        <h1 className='title'>Amenities</h1>
                         <ol className='list'>
-                            <li className='ammenity'>
-                                <img src={bookShelf} />
-                                <span>Library</span>
-                            </li>
-                            <li className='ammenity'>
-                                <img src={computerPc} />
-                                <span>Computers</span>
-                            </li>
-                            <li className='ammenity'>
-                                <img src={disableSign} />
-                                <span>Facility for disable guests</span>
-                            </li>
-                            <li className='ammenity'>
-                                <img src={lockKey} />
-                                <span>Lockers</span>
-                            </li>
-                            <li className='ammenity'>
-                                <img src={forkSpoon} />
-                                <span>Restaurant on place</span>
-                            </li>
-                            <li className='ammenity'>
-                                <img src={networkWifiSignal} />
-                                <span>Wifi available</span>
-                            </li>
-                            <li className='ammenity'>
-                                <img src={petAllow} />
-                                <span>Pets are allowed</span>
-                            </li>
-                            <li className='ammenity'>
-                                <img src={presentation} />
-                                <span>Conference venues</span>
-                            </li>
-                            <li className='ammenity'>
-                                <img src={smokeFreeArea} />
-                                <span>Smoke free area</span>
-                            </li>
+                            {this.state.property.amenities.library.value &&
+                                <li className='amenity'>
+                                    <img src={bookShelf} />
+                                    <span>Library</span>
+                                </li>}
+
+                            {this.state.property.amenities.computers.value &&
+                                <li className='amenity'>
+                                    <img src={computerPc} />
+                                    <span>Computers</span>
+                                </li>}
+
+                            {this.state.property.amenities.accessibility.value &&
+                                <li className='amenity'>
+                                    <img src={disableSign} />
+                                    <span>Facility for disable guests</span>
+                                </li>}
+
+                            {this.state.property.amenities.lockers.value &&
+                                <li className='amenity'>
+                                    <img src={lockKey} />
+                                    <span>Lockers</span>
+                                </li>}
+
+                            {this.state.property.amenities.restaurants.value &&
+                                <li className='amenity'>
+                                    <img src={forkSpoon} />
+                                    <span>Restaurant on place</span>
+                                </li>}
+
+                            {this.state.property.amenities.wifi.value &&
+                                <li className='amenity'>
+                                    <img src={networkWifiSignal} />
+                                    <span>Wifi available</span>
+                                </li>}
+
+                            {this.state.property.amenities.pet.value &&
+                                <li className='amenity'>
+                                    <img src={petAllow} />
+                                    <span>Pets are allowed</span>
+                                </li>}
+
+                            {this.state.property.amenities.conferenceVenues.value &&
+                                <li className='amenity'>
+                                    <img src={presentation} />
+                                    <span>Conference venues</span>
+                                </li>}
+
+                            {this.state.property.amenities.smoking.value &&
+                                <li className='amenity'>
+                                    <img src={smokeFreeArea} />
+                                    <span>Smoke free area</span>
+                                </li>}
                         </ol>
                     </div>
                     <div className='gallery'>

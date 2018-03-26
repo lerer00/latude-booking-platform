@@ -24,3 +24,6 @@ export const person = require('./ego/person.svg');
 export const bedDouble = require('./ego/bed-double.svg');
 export const bedSingle = require('./ego/bed-single.svg');
 export const couch = require('./ego/couch.svg');
+export const windowLock = require('./ego/window-lock.svg');
+export const warning = require('./ego/report-problem-warning-hexagon.svg');
+export const bubbleChatTyping = require('./ego/bubble-chat-typing.svg');

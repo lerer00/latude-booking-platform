@@ -20,13 +20,13 @@
     margin-bottom: 24px;
 }
 
-.property .content .ammenities .title {
+.property .content .amenities .title {
     font-size: 36px;
     color: #595959;
     margin-bottom: 16px;
 }
 
-.property .content .ammenities .list {
+.property .content .amenities .list {
     display: inline-flex;
     justify-content: flex-start;
     align-items: center;
@@ -34,18 +34,18 @@
     margin-bottom: 24px;
 }
 
-.property .content .ammenities .list .ammenity {
+.property .content .amenities .list .amenity {
     margin: 8px 4px;
     height: 24px;
 }
 
-.property .content .ammenities .list .ammenity img {
+.property .content .amenities .list .amenity img {
     display: inline-block;
     height: 100%;
     margin-left: 8px;
 }
 
-.property .content .ammenities .list .ammenity span {
+.property .content .amenities .list .amenity span {
     display: inline-block;
     line-height: 24px;
     font-size: 18px;

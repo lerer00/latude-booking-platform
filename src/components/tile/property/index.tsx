@@ -2,7 +2,7 @@ import * as React from 'react';
 import '../index.css';
 import './index.css';
 import Rating from '../../rating';
-import IProperty from '../../../model/property';
+import { IProperty } from '../../../model/property';
 import { FormattedPlural } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 import { locationMap, groupChat, calendarCheck, arrowNext } from '../../../img/index';
@@ -24,20 +24,46 @@ class PropertyTile extends React.Component<PropertyTile.Props, PropertyTile.Stat
 
     public static defaultProps: Partial<PropertyTile.Props> = {
         property: {
-            id: '0',
+            id: '',
+            name: '',
+            description: '',
+            rating: 0,
+            comments: [],
+            amenities: {
+                accessibility: {
+                    value: false
+                },
+                computers: {
+                    value: false
+                },
+                conferenceVenues: {
+                    value: false
+                },
+                library: {
+                    value: false
+                },
+                lockers: {
+                    value: false
+                },
+                pet: {
+                    value: false
+                },
+                restaurants: {
+                    value: false
+                },
+                smoking: {
+                    value: false
+                },
+                wifi: {
+                    value: false
+                }
+            },
             active: true,
+            parent: '',
             location: {
                 coordinates: [0, 0],
                 type: 'point',
-            },
-            name: 'Undefined',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' +
-                'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ' +
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et ' +
-                'dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea.',
-            rating: 3.57,
-            comments: [],
-            parent: 'Unknown'
+            }
         }
     };
 
@@ -48,7 +74,7 @@ class PropertyTile extends React.Component<PropertyTile.Props, PropertyTile.Stat
         }
 
         return (
-            <div className='tile tile-property'key={this.props.property.id}>
+            <div className='tile tile-property' key={this.props.property.id}>
                 <div className='tile-property-grid'>
                     <div className='tile-property-thumbnail'>
                         <img src='https://source.unsplash.com/random/400x400' />

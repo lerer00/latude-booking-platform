@@ -23,6 +23,10 @@
     height: 24px;
 }
 
+.tile-asset .tile-asset-grid .sleep .detail span {
+    color: #a7a7a7;
+}
+
 .tile-asset .tile-asset-grid .information {
     box-sizing: border-box;
     margin: 8px;

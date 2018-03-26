@@ -1,4 +1,4 @@
-export default interface ILocation {
+export interface ILocation {
     coordinates: [number, number];
     type: string;
 }

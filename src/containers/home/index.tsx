@@ -5,7 +5,7 @@ import Tiles from '../../components/tiles';
 import TileProperty from '../../components/tile/property';
 import { Button, IButtonState } from '../../components/button';
 import { location, locations, locationPin, calendarAdd, closeHexagon, cursorHand } from '../../img/index';
-import IProperty from '../../model/property';
+import { IProperty } from '../../model/property';
 
 const DateRange = require('react-date-range').DateRange;
 const moment = require('moment');

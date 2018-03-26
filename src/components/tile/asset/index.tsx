@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import '../index.css';
 import './index.css';
-import IAsset from '../../../model/asset';
+import { IAsset } from '../../../model/asset';
 import { Button, IButtonState } from '../../button';
 import { person, bedSingle } from '../../../img/index';
 

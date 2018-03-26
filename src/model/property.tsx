@@ -1,12 +1,14 @@
-import ILocation from './location';
+import { ILocation } from './location';
+import { IAmenities } from './amenities/amenities';
 
-export default interface IProperty {
+export interface IProperty {
     id: string;
-    active: boolean;
-    location: ILocation;
     name: string;
     description: string;
     rating: number;
     comments: Array<any>;
+    amenities: IAmenities;
+    active: boolean;
     parent: string;
+    location: ILocation;
 }

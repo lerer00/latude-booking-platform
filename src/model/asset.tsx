@@ -1,4 +1,4 @@
-export default interface IAsset {
+export interface IAsset {
     id: string;
     name: string;
     description: string;
