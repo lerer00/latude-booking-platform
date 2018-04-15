@@ -6,5 +6,6 @@
     position: relative;
     width: 1180px;
     padding: 24px 0;
-    margin: 48px auto;
+    margin: auto;
+    top: 70px;
 }

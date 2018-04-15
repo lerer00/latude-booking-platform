@@ -2,7 +2,7 @@ import * as React from 'react';
 import '../index.css';
 import './index.css';
 import Rating from '../../rating';
-import { IProperty } from '../../../model/property';
+import { IProperty } from '../../../models/property';
 import { FormattedPlural } from 'react-intl';
 import { NavLink } from 'react-router-dom';
 import { locationMap, groupChat, calendarCheck, arrowNext } from '../../../img/index';

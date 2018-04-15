@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Spinner from '../spinner';
 import './index.css';
 
 export namespace Button {
@@ -19,6 +20,7 @@ export interface IButton {
     text: string;
     state: IButtonState;
     action: Function;
+    isLoading: boolean;
 }
 
 export enum IButtonState {
@@ -63,9 +65,16 @@ export class Button extends React.Component<Button.Props & React.HTMLAttributes<
                 break;
         }
 
+        var content;
+        if (this.props.isLoading) {
+            content = <Spinner text='' />;
+        } else {
+            content = <span className='button-text'>{this.props.text}</span>;
+        }
+
         return (
             <button className={`${wantedStyles} ${this.props.className}`} onClick={() => this.executeAction()}>
-                <span className='button-text'>{this.props.text}</span>
+                {content}
             </button>
         );
     }

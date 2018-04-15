@@ -1,0 +1,157 @@
+.finder {
+    width: 100%;
+    position: absolute;
+    top: 50vh;
+    transform: translateY(-94px);
+}
+
+.finder .finder-grid-container {
+    font-family: 'CircularStdBlack', sans-serif;
+    display: grid;
+    grid-template-columns: 45% 25% 30%;
+    grid-column-gap: 4px;
+}
+
+.finder .finder-grid-container .button {
+    height: 100%;
+    background-color: #399aff;
+}
+
+.finder .finder-grid-container .button .button-text {
+    color: #ffffff;
+    vertical-align: middle;
+    font-size: 16px;
+}
+
+.finder .finder-grid-container .Select {
+    position: relative;
+}
+
+.finder .finder-grid-container .Select.is-focused .Select-control {
+    background-color: #f4f4f4;
+}
+
+.finder .finder-grid-container .Select .Select-placeholder {
+    color: #c0c0c0;
+    line-height: 56px;
+}
+
+.finder .finder-grid-container .Select .Select-control {
+    outline: 0;
+    background-color: #f4f4f4;
+    border: none;
+    height: 100%;
+}
+
+.finder .finder-grid-container .Select-control .Select-value {
+    outline: 0;
+    background-color: #f4f4f4;
+    line-height: 56px;
+}
+
+.finder .finder-grid-container .Select-control .Select-value .Select-value-label {
+    color: #212529;
+}
+
+.finder .finder-grid-container .Select .Select-menu-outer {
+    border-radius: 0 0 3px 3px;
+    font-size: 14px;
+    border: solid 1px #f4f4f4;
+}
+
+.finder .finder-grid-container .Select .Select-menu-outer .Select-option {
+    border-left: solid 2px transparent;
+    background-color: #ffffff;
+}
+
+.finder .finder-grid-container .Select .Select-menu-outer .Select-option.is-focused {
+    background-color: #f4f4f4;
+}
+
+.finder .finder-grid-container .Select .Select-menu-outer .Select-option.is-selected {
+    position: relative;
+    background-color: #ffffff;
+}
+
+.finder .finder-grid-container .Select .Select-menu-outer .Select-option.is-selected::before {
+    position: absolute;
+    border-radius: 1px;
+    width: 5px;
+    height: 5px;
+    background-color: #399aff;
+    top: 12px;
+    left: 1px;
+    content: '';
+}
+
+.finder .finder-grid-container .DateRangePicker {
+    box-shadow: 0 2px 3px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+}
+
+.finder .finder-grid-container .DateRangePicker .DateRangePickerInput {
+    border-radius: 3px;
+    background-color: #f4f4f4;
+    width: 100%;
+}
+
+.finder .finder-grid-container .DateRangePicker .DateRangePickerInput.DateRangePickerInput__withBorder {
+    border: none;
+}
+
+.finder .finder-grid-container .DateRangePicker .DateRangePickerInput .DateInput {
+    border-radius: 3px;
+    border: none;
+    text-align: center;
+    width: 40%;
+    box-sizing: inherit;
+}
+
+.finder .finder-grid-container .DateRangePicker .DateRangePickerInput .DateInput #START_DATE {
+    text-align: right;
+}
+
+.finder .finder-grid-container .DateRangePicker .DateRangePickerInput .DateInput #END_DATE {
+    text-align: left;
+}
+
+.finder .finder-grid-container .DateRangePicker .DateRangePickerInput .DateInput .DateInput_input {
+    font-family: 'CircularStdBlack', sans-serif;
+    font-weight: 400;
+    border-radius: 3px;
+    background-color: #f4f4f4;
+    padding: 16px 0;
+    color: #212529;
+    font-size: 16px;
+}
+
+.finder .finder-grid-container .DateRangePicker .DateRangePickerInput .DateInput .DateInput_input.DateInput_input__focused {
+    border-color: transparent;
+}
+
+.finder .finder-grid-container .DateRangePicker .DateRangePickerInput .DateRangePickerInput_arrow {
+    border: none;
+    width: 20%;
+    fill: #c0c0c0;
+}
+
+.finder .finder-grid-container .DateRangePicker .DateRangePickerInput .DateRangePickerInput_arrow_svg {
+    transform: translateX(70%) !important;
+}
+
+.finder .finder-grid-container .DateRangePicker .DateRangePicker_picker .DayPicker_focusRegion {
+    margin-top: -1px;
+}
+
+.finder .finder-grid-container .DateRangePicker .DateRangePicker_picker .CalendarDay  {
+    vertical-align: middle;
+}
+
+.finder .finder-grid-container .DateRangePicker .DateRangePicker_picker .CalendarDay.CalendarDay__selected{
+    background-color: #399aff !important;
+    border: solid #399aff 1px;
+}
+
+.finder .finder-grid-container .DateRangePicker .DateRangePicker_picker .CalendarDay.CalendarDay__selected_span{
+    background-color: #53b4ff;
+    border: solid #53b4ff 1px;
+}

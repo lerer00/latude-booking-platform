@@ -8,8 +8,8 @@ import {
 } from '../../img/index';
 import Tiles from '../../components/tiles';
 import TileAsset from '../../components/tile/asset';
-import { IProperty } from '../../model/property';
-import { IAsset } from '../../model/asset';
+import { IProperty } from '../../models/property';
+import { IAsset } from '../../models/asset';
 
 const Marker = require('react-mapbox-gl').Marker;
 const Cluster = require('react-mapbox-gl').Cluster;

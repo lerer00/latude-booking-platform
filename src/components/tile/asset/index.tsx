@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import '../index.css';
 import './index.css';
-import { IAsset } from '../../../model/asset';
+import { IAsset } from '../../../models/asset';
 import { Button, IButtonState } from '../../button';
 import { person, bedSingle } from '../../../img/index';
 
@@ -95,7 +95,7 @@ class AssetTile extends React.Component<AssetTile.Props, AssetTile.State> {
                             <p className='no-vacancy' >no-vacancy</p> :
                             <div>
                                 <p className='price'>{this.props.asset.price} <span className='currency'>{this.props.asset.currency}</span></p>
-                                <Button className='book-button' text='Book' state={IButtonState.default} action={this.bookAsset} />
+                                <Button className='book-button' text='Book' state={IButtonState.default} action={this.bookAsset} isLoading={false} />
                             </div>
                     }
                     </div>

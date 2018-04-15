@@ -53,3 +53,31 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+::-webkit-input-placeholder {
+	/* Chrome/Opera/Safari */
+	font-size: 0.8em;
+	font-family: 'CircularStdBook', sans-serif;
+	color: #c0c0c0;
+}
+
+::-moz-placeholder {
+	/* Firefox 19+ */
+	font-size: 0.8em;
+	font-family: 'CircularStdBook', sans-serif;
+	color: #c0c0c0;
+}
+
+:-ms-input-placeholder {
+	/* IE 10+ */
+	font-size: 0.8em;
+	font-family: 'CircularStdBook', sans-serif;
+	color: #c0c0c0;
+}
+
+:-moz-placeholder {
+	/* Firefox 18- */
+	font-size: 0.8em;
+	font-family: 'CircularStdBook', sans-serif;
+	color: #c0c0c0;
+}

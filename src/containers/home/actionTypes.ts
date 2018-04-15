@@ -1,0 +1,4 @@
+export const UPDATE_FINDER = 'home/UPDATE_FINDER';
+export const SEARCH_FINDER = 'home/SEARCH_FINDER';
+export const SEARCH_FINDER_SUCCESS = 'home/SEARCH_FINDER_SUCCESS';
+export const SEARCH_FINDER_ERROR = 'home/SEARCH_FINDER_ERROR';

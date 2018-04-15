@@ -6,16 +6,19 @@
     "axios": "^0.17.1",
     "dotenv": "^4.0.0",
     "mapbox-gl": "^0.43.0",
-    "moment": "^2.20.1",
+    "moment": "^2.22.0",
     "prop-types": "^15.6.0",
     "react": "^16.0.0",
     "react-date-range": "^0.9.4",
+    "react-dates": "^16.6.1",
     "react-dom": "^16.0.0",
     "react-intl": "^2.4.0",
     "react-mapbox-gl": "^3.4.1",
     "react-modal": "^3.1.11",
+    "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-scripts-ts": "^2.8.0",
+    "react-select": "^1.2.1",
     "react-web3": "^0.4.5",
     "truffle-contract": "^3.0.4",
     "web3": "^1.0.0-beta.33"
@@ -23,9 +26,12 @@
   "devDependencies": {
     "@types/prop-types": "^15.5.2",
     "@types/react": "^16.0.18",
+    "@types/react-dates": "^16.0.5",
     "@types/react-dom": "^16.0.2",
     "@types/react-intl": "^2.3.3",
-    "@types/react-router-dom": "^4.2.3"
+    "@types/react-redux": "^5.0.16",
+    "@types/react-router-dom": "^4.2.3",
+    "@types/react-select": "^1.2.6"
   },
   "scripts": {
     "start": "react-scripts-ts start",

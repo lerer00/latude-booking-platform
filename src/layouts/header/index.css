@@ -1,8 +1,9 @@
 .header {
-    position: relative;
+    position: fixed;
     z-index: 10;
     height: 70px;
-    background-color: #0667d0;
+    width: 100%;
+    background-color: transparent;
     color: #FFFFFF;
 }
 

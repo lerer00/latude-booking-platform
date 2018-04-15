@@ -6,7 +6,7 @@ import Home from '../home';
 import Property from '../property';
 import './index.css';
 
-export namespace Default {
+export namespace Root {
   export interface Props {
     // empty
   }
@@ -16,14 +16,14 @@ export namespace Default {
   }
 }
 
-class Default extends React.Component<Default.Props, Default.State> {
-  constructor(props?: Default.Props, context?: any) {
+class Root extends React.Component<Root.Props, Root.State> {
+  constructor(props?: Root.Props, context?: any) {
     super(props, context);
   }
 
   render() {
     return (
-      <div className='default'>
+      <div className='root-route'>
         <Header />
         <Switch>
           <Route exact={true} path='/' component={Home} />
@@ -35,4 +35,4 @@ class Default extends React.Component<Default.Props, Default.State> {
   }
 }
 
-export default Default;
+export default Root;
