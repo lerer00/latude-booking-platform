@@ -14,6 +14,7 @@ export type Context = {
 
 export interface State {
     isLoading: boolean;
+    properties: Array<any>;
     finder: FinderModel;
 }
 

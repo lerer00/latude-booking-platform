@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router';
 import Header from '../../layouts/header';
 import Footer from '../../layouts/footer';
 import Home from '../home';
+import Properties from '../properties';
 import Property from '../property';
 import './index.css';
 
@@ -25,10 +26,9 @@ class Root extends React.Component<Root.Props, Root.State> {
     return (
       <div className='root-route'>
         <Header />
-        <Switch>
-          <Route exact={true} path='/' component={Home} />
-          <Route exact={true} path='/properties/:pid' component={Property} />
-        </Switch>
+        <Route exact={true} path='/' component={Home} />
+        <Route exact={true} path='/properties' component={Properties} />
+        <Route exact={true} path='/properties/:pid' component={Property} />
         <Footer />
       </div>
     );

@@ -6,6 +6,7 @@ import hub from '../../services/rest/hubRequest';
 var moment = require('moment');
 
 const initialState: State = {
+    properties: [],
     isLoading: false,
     finder: {
         destination: '',
@@ -31,13 +32,13 @@ export default (state = initialState, action: AnyAction): State => {
             return isLoading();
         case t.SEARCH_FINDER_SUCCESS:
             return update({
-                properties: action.payload,
                 isLoading: false,
+                properties: action.payload
             });
         case t.SEARCH_FINDER_ERROR:
             return update({
-                properties: action.payload,
                 isLoading: false,
+                properties: action.payload,
             });
         default:
             return state;

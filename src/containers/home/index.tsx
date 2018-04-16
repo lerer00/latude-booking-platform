@@ -35,6 +35,7 @@ const mapStateToProps = (state: {}) => {
   const homeState: State = state['home'];
   return {
     isLoading: homeState.isLoading,
+    properties: homeState.properties,
     finder: homeState.finder
   };
 };

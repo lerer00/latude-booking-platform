@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { ConnectedRouter } from 'react-router-redux';
 import { Provider } from 'react-redux';
+import { history } from './store';
 import Root from './containers/root';
 import store from './store';
 
@@ -11,10 +12,10 @@ class App extends React.Component {
     return (
       <div className='App'>
         <div>
-        <Provider store={store}>
-          <BrowserRouter>
-            <Root />
-          </BrowserRouter>
+          <Provider store={store}>
+            <ConnectedRouter history={history}>
+              <Root />
+            </ConnectedRouter>
           </Provider>
         </div>
       </div>

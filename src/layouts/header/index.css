@@ -3,8 +3,17 @@
     z-index: 10;
     height: 70px;
     width: 100%;
+    color: #ffffff;
+    transition: background-color ease-out 0.5s;
+
+}
+
+.header.transparent {
     background-color: transparent;
-    color: #FFFFFF;
+}
+
+.header.blue {
+    background-color: #0667d0;
 }
 
 .header .container {
@@ -14,13 +23,14 @@
     margin: auto;
 }
 
-.header .container .left{
+.header .container .left {
+    
     width: 50%;
     height: 100%;
     float: left;
 }
 
-.header .container .right{
+.header .container .right {
     width: 50%;
     height: 100%;
     float: right;
@@ -33,6 +43,11 @@
     line-height: 70px;
     font-size: 1.8em;
     margin-right: 4px;
+    text-decoration: none;
+}
+
+.header .container .content .title:visited{
+    color: #ffffff;
 }
 
 .header .container .content .subtitle {

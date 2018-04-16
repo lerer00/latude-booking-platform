@@ -43,6 +43,10 @@
     height: 100%;
 }
 
+.finder .finder-grid-container .Select .Select-control .Select-input{
+    line-height: 56px;
+}
+
 .finder .finder-grid-container .Select-control .Select-value {
     outline: 0;
     background-color: #f4f4f4;
