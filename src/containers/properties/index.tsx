@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import Tiles from '../../components/tiles';
+import PropertyTile from '../../components/tile/property';
+import EmptySearch from '../../components/emptySearch';
 import './index.css';
 
 import { Props, State } from './model';
@@ -13,12 +16,27 @@ class Properties extends React.Component<Props, State> {
         super();
     }
 
+    filterProperties(): Array<PropertyTile> {
+        var properties: any = [];
+        this.props.properties.map((property, index) => {
+            properties.push(<PropertyTile property={property} />);
+        });
+
+        return properties;
+    }
+
     render() {
+        var properties = this.filterProperties();
+
         return (
-            <div className='properties-route route-container'>
+            <div className='route-container properties-route '>
+                <div className='header-spacer'>
+                    &nbsp;
+                </div>
                 <div className='route-content content'>
-                    <h1>{this.props.properties.toString()}</h1>
-                    <button onClick={this.props.searchFinder}>go</button>
+                    <div className='filtered-properties-list'>
+                        <Tiles list={properties} empty={<EmptySearch text={'There\'s no property found in regard to your criteria. Please select another region.'} />} />
+                    </div>
                 </div>
             </div>
         );

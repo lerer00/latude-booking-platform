@@ -16,7 +16,7 @@ class Home extends React.Component<Props> {
 
   render() {
     return (
-      <div className='home-route route-container'>
+      <div className='route-container home-route '>
         <div className='route-content content'>
           <Finder
             destination={this.props.finder.destination}

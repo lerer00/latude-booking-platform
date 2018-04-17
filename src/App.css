@@ -1,10 +1,15 @@
 .route-container {
+    position: relative;
     background-color: transparent;
+}
+
+.header-spacer{
+    position: relative;
+    height: 70px;
 }
 
 .route-content {
     position: relative;
     width: 1180px;
-    padding: 70px 0 0 0;
     margin: auto;
 }

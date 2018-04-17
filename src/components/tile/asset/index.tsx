@@ -51,7 +51,6 @@ class AssetTile extends React.Component<AssetTile.Props, AssetTile.State> {
     };
 
     bookAsset() {
-        console.log(this.props.asset);
         var propertyInstance: any;
         var assetId: string = this.props.asset.id.split('&')[1];
         propertyContract.at(this.props.asset.parent).then((instance: any) => {

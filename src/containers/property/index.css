@@ -1,18 +1,38 @@
-.property .content {
+.property-route{
+    position: relative;
+}
+
+.property-route .content {
+    padding: 24px;
+}
+
+.property-route .content .property-detail {
     position: relative;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 3px;
-    padding: 16px;
     box-shadow: 0 2px 3px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+    padding: 16px;
 }
 
-.property .content .main-info .name {
+.property-route .content .property-detail .sticky-container{
+    width: 100px;
+    left: -132px;
+    top: 86px;
+    position: absolute;
+}
+
+.property-route .content .property-detail .sticky-container .sticky-button{
+    width: 100%;
+    margin: 4px 0;
+}
+
+.property-route .content .property-detail .main-info .name {
     font-size: 48px;
     color: #595959;
     margin-bottom: 16px;
 }
 
-.property .content .main-info .description {
+.property-route .content .property-detail .main-info .description {
     color: #a7a7a7;
     font-size: 18px;
     line-height: 1.5;
@@ -20,13 +40,13 @@
     margin-bottom: 24px;
 }
 
-.property .content .amenities .title {
+.property-route .content .property-detail .amenities .title {
     font-size: 36px;
     color: #595959;
     margin-bottom: 16px;
 }
 
-.property .content .amenities .list {
+.property-route .content .property-detail .amenities .list {
     display: inline-flex;
     justify-content: flex-start;
     align-items: center;
@@ -34,18 +54,18 @@
     margin-bottom: 24px;
 }
 
-.property .content .amenities .list .amenity {
+.property-route .content .property-detail .amenities .list .amenity {
     margin: 8px 4px;
     height: 24px;
 }
 
-.property .content .amenities .list .amenity img {
+.property-route .content .property-detail .amenities .list .amenity img {
     display: inline-block;
     height: 100%;
     margin-left: 8px;
 }
 
-.property .content .amenities .list .amenity span {
+.property-route .content .property-detail .amenities .list .amenity span {
     display: inline-block;
     line-height: 24px;
     font-size: 18px;
@@ -53,13 +73,13 @@
     vertical-align: bottom;
 }
 
-.property .content .gallery .title {
+.property-route .content .property-detail .gallery .title {
     font-size: 36px;
     color: #595959;
     margin-bottom: 16px;
 }
 
-.property .content .gallery .grid {
+.property-route .content .property-detail .gallery .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-column-gap: 10px;
@@ -67,17 +87,17 @@
     margin-bottom: 24px;
 }
 
-.property .content .gallery .grid img {
+.property-route .content .property-detail .gallery .grid img {
     width: 100%;
 }
 
-.property .content .location .title {
+.property-route .content .property-detail .location .title {
     font-size: 36px;
     color: #595959;
     margin-bottom: 16px;
 }
 
-.property .content .location .map {
+.property-route .content .property-detail .location .map {
     position: relative;
     width: 100%;
     height: 400px;
@@ -86,11 +106,11 @@
     margin-bottom: 16px;
 }
 
-.property .content .location .map .mapboxgl-marker {
+.property-route .content .property-detail .location .map .mapboxgl-marker {
     pointer-events: none;
 }
 
-.property .content .assets .title {
+.property-route .content .property-detail .assets .title {
     font-size: 36px;
     color: #595959;
     margin-bottom: 16px;

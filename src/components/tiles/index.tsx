@@ -18,7 +18,7 @@ class Tiles extends React.Component<Tiles.Props, Tiles.State> {
     }
 
     render() {
-        var items: any;
+        var items: Array<any>;
         if (this.props.list.length <= 0) {
             items = this.props.empty;
         } else {

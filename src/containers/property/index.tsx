@@ -1,15 +1,20 @@
 import * as React from 'react';
+import { StickyContainer, Sticky } from 'react-sticky';
 import './index.css';
 import axios, { AxiosResponse } from 'axios';
 import {
     bookShelf, computerPc, disableSign, forkSpoon,
     lockKey, networkWifiSignal, petAllow, presentation,
-    smokeFreeArea, locations, locationPin, cursorHand
+    smokeFreeArea, locations, locationPin
 } from '../../img/index';
 import Tiles from '../../components/tiles';
 import TileAsset from '../../components/tile/asset';
+import EmptySearch from '../../components/emptySearch';
+import { Button, IButtonState } from '../../components/button';
 import { IProperty } from '../../models/property';
 import { IAsset } from '../../models/asset';
+import { goBack } from 'react-router-redux';
+import store from '../../store';
 
 const Marker = require('react-mapbox-gl').Marker;
 const Cluster = require('react-mapbox-gl').Cluster;
@@ -128,125 +133,133 @@ class Property extends React.Component<Property.Props, Property.State> {
             assets.push(<TileAsset key={asset.id} asset={asset} />);
         });
 
-        var emptyAssets = (
-            <div className='tile tile-empty'>
-                <div>
-                    <img src={cursorHand} className='tile-empty-image' />
-                </div>
-                <div className='tile-empty-content'>
-                    <h1 className='tile-empty-content-title'>Nothing...</h1>
-                    <p className='tile-empty-content-message'>There's no asset found within this property.</p>
-                </div>
-            </div>
-        );
-
         return (
-            <div className='route-container property'>
+            <div className='route-container property-route'>
+                <div className='header-spacer'>
+                    &nbsp;
+                </div>
                 <div className='route-content content'>
-                    <div className='main-info'>
-                        <h1 className='name'>{this.state.property.name}</h1>
-                        <h2 className='description'>{this.state.property.description}</h2>
-                    </div>
-                    <div className='amenities'>
-                        <h1 className='title'>Amenities</h1>
-                        <ol className='list'>
-                            {this.state.property.amenities.library.value &&
-                                <li className='amenity'>
-                                    <img src={bookShelf} />
-                                    <span>Library</span>
-                                </li>}
+                    <div className='property-detail'>
+                        <StickyContainer>
+                            <Sticky>
+                                {({ isSticky, wasSticky, style, distanceFromTop, distanceFromBottom, calculatedHeight }: any) => {
 
-                            {this.state.property.amenities.computers.value &&
-                                <li className='amenity'>
-                                    <img src={computerPc} />
-                                    <span>Computers</span>
-                                </li>}
-
-                            {this.state.property.amenities.accessibility.value &&
-                                <li className='amenity'>
-                                    <img src={disableSign} />
-                                    <span>Facility for disable guests</span>
-                                </li>}
-
-                            {this.state.property.amenities.lockers.value &&
-                                <li className='amenity'>
-                                    <img src={lockKey} />
-                                    <span>Lockers</span>
-                                </li>}
-
-                            {this.state.property.amenities.restaurants.value &&
-                                <li className='amenity'>
-                                    <img src={forkSpoon} />
-                                    <span>Restaurant on place</span>
-                                </li>}
-
-                            {this.state.property.amenities.wifi.value &&
-                                <li className='amenity'>
-                                    <img src={networkWifiSignal} />
-                                    <span>Wifi available</span>
-                                </li>}
-
-                            {this.state.property.amenities.pet.value &&
-                                <li className='amenity'>
-                                    <img src={petAllow} />
-                                    <span>Pets are allowed</span>
-                                </li>}
-
-                            {this.state.property.amenities.conferenceVenues.value &&
-                                <li className='amenity'>
-                                    <img src={presentation} />
-                                    <span>Conference venues</span>
-                                </li>}
-
-                            {this.state.property.amenities.smoking.value &&
-                                <li className='amenity'>
-                                    <img src={smokeFreeArea} />
-                                    <span>Smoke free area</span>
-                                </li>}
-                        </ol>
-                    </div>
-                    <div className='gallery'>
-                        <h1 className='title'>Photo gallery</h1>
-                        <div className='grid'>
-                            <img src='https://source.unsplash.com/random/200x200' />
-                            <img src='https://source.unsplash.com/random/200x200' />
-                            <img src='https://source.unsplash.com/random/200x200' />
-                            <img src='https://source.unsplash.com/random/200x200' />
-                            <img src='https://source.unsplash.com/random/200x200' />
-                            <img src='https://source.unsplash.com/random/200x200' />
-                            <img src='https://source.unsplash.com/random/200x200' />
-                            <img src='https://source.unsplash.com/random/200x200' />
-                            <img src='https://source.unsplash.com/random/200x200' />
-                            <img src='https://source.unsplash.com/random/200x200' />
-                            <img src='https://source.unsplash.com/random/200x200' />
-                            <img src='https://source.unsplash.com/random/200x200' />
-                        </div>
-                    </div>
-                    <div className='location'>
-                        <h1 className='title'>Location</h1>
-                        <div className='map'>
-                            <Map
-                                style='mapbox://styles/mapbox/streets-v9'
-                                containerStyle={{
-                                    height: '100%',
-                                    width: '100%'
+                                    return <div style={style}>
+                                        <div className='sticky-container'>
+                                            <Button className='sticky-button' text='Back' state={IButtonState.default} action={() => { store.dispatch(goBack()); }} isLoading={false} />
+                                            <Button className='sticky-button' text='Save' state={IButtonState.default} action={() => { store.dispatch(goBack()); }} isLoading={false} />
+                                            <Button className='sticky-button' text='Like' state={IButtonState.default} action={() => { store.dispatch(goBack()); }} isLoading={false} />
+                                        </div>
+                                    </div>;
                                 }}
-                                center={this.state.mapOptions.center}
-                                zoom={this.state.mapOptions.zoom}
-                            >
-                                <Cluster ClusterMarkerFactory={this.clusterMarker}>
-                                    {
-                                        markers
-                                    }
-                                </Cluster>
-                            </Map>
-                        </div>
-                    </div>
-                    <div className='assets'>
-                        <h1 className='title'>Assets</h1>
-                        <div className='assets-list'>
-                            <Tiles list={assets} empty={emptyAssets} />
-                        </div>
+                            </Sticky>
+
+                            <div className='main-info'>
+                                <h1 className='name'>{this.state.property.name}</h1>
+                                <h2 className='description'>{this.state.property.description}</h2>
+                            </div>
+                            <div className='amenities'>
+                                <h1 className='title'>Amenities</h1>
+                                <ol className='list'>
+                                    {this.state.property.amenities.library.value &&
+                                        <li className='amenity'>
+                                            <img src={bookShelf} />
+                                            <span>Library</span>
+                                        </li>}
+
+                                    {this.state.property.amenities.computers.value &&
+                                        <li className='amenity'>
+                                            <img src={computerPc} />
+                                            <span>Computers</span>
+                                        </li>}
+
+                                    {this.state.property.amenities.accessibility.value &&
+                                        <li className='amenity'>
+                                            <img src={disableSign} />
+                                            <span>Facility for disable guests</span>
+                                        </li>}
+
+                                    {this.state.property.amenities.lockers.value &&
+                                        <li className='amenity'>
+                                            <img src={lockKey} />
+                                            <span>Lockers</span>
+                                        </li>}
+
+                                    {this.state.property.amenities.restaurants.value &&
+                                        <li className='amenity'>
+                                            <img src={forkSpoon} />
+                                            <span>Restaurant on place</span>
+                                        </li>}
+
+                                    {this.state.property.amenities.wifi.value &&
+                                        <li className='amenity'>
+                                            <img src={networkWifiSignal} />
+                                            <span>Wifi available</span>
+                                        </li>}
+
+                                    {this.state.property.amenities.pet.value &&
+                                        <li className='amenity'>
+                                            <img src={petAllow} />
+                                            <span>Pets are allowed</span>
+                                        </li>}
+
+                                    {this.state.property.amenities.conferenceVenues.value &&
+                                        <li className='amenity'>
+                                            <img src={presentation} />
+                                            <span>Conference venues</span>
+                                        </li>}
+
+                                    {this.state.property.amenities.smoking.value &&
+                                        <li className='amenity'>
+                                            <img src={smokeFreeArea} />
+                                            <span>Smoke free area</span>
+                                        </li>}
+                                </ol>
+                            </div>
+                            <div className='gallery'>
+                                <h1 className='title'>Photo gallery</h1>
+                                <div className='grid'>
+                                    <img src='https://source.unsplash.com/random/200x200' />
+                                    <img src='https://source.unsplash.com/random/200x200' />
+                                    <img src='https://source.unsplash.com/random/200x200' />
+                                    <img src='https://source.unsplash.com/random/200x200' />
+                                    <img src='https://source.unsplash.com/random/200x200' />
+                                    <img src='https://source.unsplash.com/random/200x200' />
+                                    <img src='https://source.unsplash.com/random/200x200' />
+                                    <img src='https://source.unsplash.com/random/200x200' />
+                                    <img src='https://source.unsplash.com/random/200x200' />
+                                    <img src='https://source.unsplash.com/random/200x200' />
+                                    <img src='https://source.unsplash.com/random/200x200' />
+                                    <img src='https://source.unsplash.com/random/200x200' />
+                                </div>
+                            </div>
+                            <div className='location'>
+                                <h1 className='title'>Location</h1>
+                                <div className='map'>
+                                    <Map
+                                        style='mapbox://styles/mapbox/streets-v9'
+                                        containerStyle={{
+                                            height: '100%',
+                                            width: '100%'
+                                        }}
+                                        center={this.state.mapOptions.center}
+                                        zoom={this.state.mapOptions.zoom}
+                                    >
+                                        <Cluster ClusterMarkerFactory={this.clusterMarker}>
+                                            {
+                                                markers
+                                            }
+                                        </Cluster>
+                                    </Map>
+                                </div>
+                            </div>
+                            <div className='assets'>
+                                <h1 className='title'>Assets</h1>
+                                <div className='assets-list'>
+                                    <Tiles list={assets} empty={<EmptySearch text={'There\'s no asset found within this property.'} />} />
+                                </div>
+                            </div>
+                        </StickyContainer>
                     </div>
                 </div>
             </div>
