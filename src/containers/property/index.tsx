@@ -48,6 +48,7 @@ class Property extends React.Component<Property.Props, Property.State> {
                 description: '',
                 rating: 0,
                 comments: [],
+                images: [],
                 amenities: {
                     accessibility: {
                         value: false
@@ -217,20 +218,15 @@ class Property extends React.Component<Property.Props, Property.State> {
                                 </ol>
                             </div>
                             <div className='gallery'>
-                                <h1 className='title'>Photo gallery</h1>
+                                <h1 className='title'>Photos</h1>
                                 <div className='grid'>
-                                    <img src='https://source.unsplash.com/random/200x200' />
-                                    <img src='https://source.unsplash.com/random/200x200' />
-                                    <img src='https://source.unsplash.com/random/200x200' />
-                                    <img src='https://source.unsplash.com/random/200x200' />
-                                    <img src='https://source.unsplash.com/random/200x200' />
-                                    <img src='https://source.unsplash.com/random/200x200' />
-                                    <img src='https://source.unsplash.com/random/200x200' />
-                                    <img src='https://source.unsplash.com/random/200x200' />
-                                    <img src='https://source.unsplash.com/random/200x200' />
-                                    <img src='https://source.unsplash.com/random/200x200' />
-                                    <img src='https://source.unsplash.com/random/200x200' />
-                                    <img src='https://source.unsplash.com/random/200x200' />
+                                    {
+                                        this.state.property.images.map((image: string, index: number) => {
+                                            return <div className='manage-property-modal-current-image-container' key={index}>
+                                                <img className='manage-property-modal-current-image' src={image} />
+                                            </div>;
+                                        })
+                                    }
                                 </div>
                             </div>
                             <div className='location'>

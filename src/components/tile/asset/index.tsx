@@ -5,6 +5,7 @@ import './index.css';
 import { IAsset } from '../../../models/asset';
 import { Button, IButtonState } from '../../button';
 import { person, bedSingle } from '../../../img/index';
+import store from '../../../store';
 
 const web3 = window['web3'];
 const contract = require('truffle-contract');
@@ -58,10 +59,14 @@ class AssetTile extends React.Component<AssetTile.Props, AssetTile.State> {
             var durationInDays = 2;
             return propertyInstance.getStayPriceInWei.call(assetId, durationInDays, { from: this.context.web3.selectedAccount });
         }).then((priceInWei: any) => {
+            // retrieve dates from the store
+            var dateRange = store.getState()['home']['finder']['dateRange'];
+            console.log(dateRange.startDate.unix(), dateRange.endDate.unix());
+
             return propertyInstance.addStay(
                 assetId,
-                1522296000,
-                1522555199,
+                dateRange.startDate.unix(),
+                dateRange.endDate.unix(),
                 {
                     from: this.context.web3.selectedAccount,
                     value: priceInWei

@@ -29,6 +29,7 @@ class PropertyTile extends React.Component<PropertyTile.Props, PropertyTile.Stat
             description: '',
             rating: 0,
             comments: [],
+            images: [],
             amenities: {
                 accessibility: {
                     value: false
@@ -77,7 +78,7 @@ class PropertyTile extends React.Component<PropertyTile.Props, PropertyTile.Stat
             <div className='tile tile-property' key={this.props.property.id}>
                 <div className='tile-property-grid'>
                     <div className='tile-property-thumbnail'>
-                        <img src='https://source.unsplash.com/random/400x400' />
+                        <img src={this.props.property.images[0]} />
                     </div>
                     <div className='tile-property-content'>
                         <h1 className='tile-property-name'>{isLit} {this.props.property.name}</h1>

@@ -7,6 +7,7 @@ export interface IProperty {
     description: string;
     rating: number;
     comments: Array<any>;
+    images: Array<string>;
     amenities: IAmenities;
     active: boolean;
     parent: string;
