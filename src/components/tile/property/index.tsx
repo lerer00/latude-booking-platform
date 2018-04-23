@@ -5,7 +5,7 @@ import Rating from '../../rating';
 import { IProperty } from '../../../models/property';
 import { FormattedPlural } from 'react-intl';
 import { NavLink } from 'react-router-dom';
-import { locationMap, groupChat, calendarCheck, arrowNext } from '../../../img/index';
+import { locationMap, groupChat, calendarCheck, arrowNext, picture2 } from '../../../img/index';
 
 export namespace PropertyTile {
     export interface Props {
@@ -74,20 +74,27 @@ class PropertyTile extends React.Component<PropertyTile.Props, PropertyTile.Stat
             isLit = <span className='is-lit'>🔥</span>;
         }
 
+        let thumbnail;
+        if (this.props.property.images.length > 0) {
+            thumbnail = <img src={this.props.property.images[0]} />;
+        } else {
+            thumbnail = <img className='default-picture' src={picture2} />;
+        }
+
         return (
             <div className='tile tile-property' key={this.props.property.id}>
                 <div className='tile-property-grid'>
                     <div className='tile-property-thumbnail'>
-                        <img src={this.props.property.images[0]} />
+                        {thumbnail}
                     </div>
                     <div className='tile-property-content'>
                         <h1 className='tile-property-name'>{isLit} {this.props.property.name}</h1>
                         <p className='tile-property-description'>
-                            {this.props.property.description}
-                            <NavLink className='link' to={'/properties/' + this.props.property.id} >
-                                more details <img src={arrowNext} />
-                            </NavLink>
+                            {this.props.property.description.substring(0, 500)}
                         </p>
+                        <NavLink className='link' to={'/properties/' + this.props.property.id} >
+                            more details <img src={arrowNext} />
+                        </NavLink>
                         <Rating max={5} score={this.props.property.rating} />
                     </div>
                     <div className='tile-property-details'>

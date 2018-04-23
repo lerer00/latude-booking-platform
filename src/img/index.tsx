@@ -27,3 +27,4 @@ export const couch = require('./ego/couch.svg');
 export const windowLock = require('./ego/window-lock.svg');
 export const warning = require('./ego/report-problem-warning-hexagon.svg');
 export const bubbleChatTyping = require('./ego/bubble-chat-typing.svg');
+export const picture2 = require('./ego/picture-2.svg');

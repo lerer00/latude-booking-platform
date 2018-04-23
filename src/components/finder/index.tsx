@@ -16,7 +16,7 @@ interface DateRange {
 
 interface Props {
     isLoading: boolean;
-    destination: string;
+    destination: any;
     dateRange: DateRange;
     update: (prop: string, value: any) => void;
     search: () => void;
@@ -40,7 +40,7 @@ class Finder extends React.Component<Props, State> {
     }
 
     handleDestinationChange = (selectedDestination: any) => {
-        this.props.update('destination', selectedDestination.value);
+        this.props.update('destination', this.retrieveJson());
     }
 
     handleDateRangeChange = (startDate: Moment, endDate: Moment) => {
@@ -53,13 +53,44 @@ class Finder extends React.Component<Props, State> {
         });
     }
 
+    retrieveJson = () => {
+        return {
+            'label': 'Canada',
+            'type': 'Polygon',
+            'coordinates': [
+                [
+                    [
+                        -71.52786254882812,
+                        46.71632714994794
+                    ],
+                    [
+                        -71.08840942382812,
+                        46.71632714994794
+                    ],
+                    [
+                        -71.08840942382812,
+                        46.948387301863534
+                    ],
+                    [
+                        -71.52786254882812,
+                        46.948387301863534
+                    ],
+                    [
+                        -71.52786254882812,
+                        46.71632714994794
+                    ]
+                ]
+            ]
+        };
+    }
+
     render() {
         return (
             <div className='finder'>
                 <div className='finder-grid-container'>
                     <Select
                         className='destination'
-                        value={this.props.destination}
+                        value={this.props.destination.label}
                         placeholder='Destionation / Country / City'
                         state={ISelectState.default}
                         searchable={true}

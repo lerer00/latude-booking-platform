@@ -18,6 +18,12 @@
     width: 100%;
 }
 
+.tile-property .tile-property-grid .tile-property-thumbnail .default-picture {
+    width: 75%;
+    margin: auto;
+    display: block;
+}
+
 .tile-property .tile-property-grid .tile-property-content {
     color: #595959;
     grid-column: 2 / 5;
@@ -36,20 +42,25 @@
     font-size: 1em;
     color: #a7a7a7;
     line-height: 1.5;
-    margin-bottom: 16px;
+    display: inline;
 }
 
-.tile-property .tile-property-grid .tile-property-content .tile-property-description a {
+.tile-property .tile-property-grid .tile-property-content .link {
     margin-left: 4px;
     text-decoration: none;
     color: #399aff;
     cursor: pointer;
 }
 
-.tile-property .tile-property-grid .tile-property-content .tile-property-description a img {
+.tile-property .tile-property-grid .tile-property-content .link img {
     display: inline-block;
     width: 17px;
     vertical-align: text-top;
+}
+
+.tile-property .tile-property-grid .tile-property-content .rating {
+    display: block;
+    margin-top: 8px;
 }
 
 .tile-property .tile-property-grid .tile-property-details {
@@ -64,36 +75,27 @@
     margin-bottom: 16px;
 }
 
-.tile-property .tile-property-grid .tile-property-details .tile-property-actions{
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions {
     position: absolute;
     bottom: 0;
     right: 0;
 }
 
-.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-comments,
-.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-location,
-.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-check-availabilities {
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-comments, .tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-location, .tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-check-availabilities {
     cursor: pointer;
     color: #a7a7a7;
     text-decoration: underline;
 }
 
-.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-comments > a,
-.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-location > a,
-.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-check-availabilities > a {
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-comments>a, .tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-location>a, .tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-check-availabilities>a {
     vertical-align: top;
 }
 
-.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-comments > a span,
-.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-location > a span,
-.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-check-availabilities > a span {
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-comments>a span, .tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-location>a span, .tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-check-availabilities>a span {
     vertical-align: top;
 }
 
-.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-comments img,
-.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-location img,
-.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-check-availabilities img
-{
+.tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-comments img, .tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-location img, .tile-property .tile-property-grid .tile-property-details .tile-property-actions .tile-property-check-availabilities img {
     margin: 0 8px;
     width: 24px;
 }
