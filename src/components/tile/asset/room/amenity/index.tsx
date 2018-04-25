@@ -52,10 +52,10 @@ class RoomAmenity extends React.Component<Props, State> {
         var beds: Array<IAssetAmenity> = this.props.amenities.filter(a => a.type === AssetAmenityTypes.BED);
         var roomDetail: IRoomDetail = {
             maximumBedOccupency: beds.map(a => this.getBedOccupancy(a.properties) * a.properties['number']).reduce((p, a) => p + a),
-            single: beds.filter(a => this.getBedOccupancy(a.properties) === 1).map(a => this.getBedOccupancy(a.properties) * a.properties['number']).reduce((p, a) => p + a, 0),
-            double: beds.filter(a => this.getBedOccupancy(a.properties) === 2).map(a => this.getBedOccupancy(a.properties) * a.properties['number']).reduce((p, a) => p + a, 0),
-            triple: beds.filter(a => this.getBedOccupancy(a.properties) === 3).map(a => this.getBedOccupancy(a.properties) * a.properties['number']).reduce((p, a) => p + a, 0),
-            quad: beds.filter(a => this.getBedOccupancy(a.properties) === 4).map(a => this.getBedOccupancy(a.properties) * a.properties['number']).reduce((p, a) => p + a, 0)
+            single: beds.filter(a => this.getBedOccupancy(a.properties) === 1).map(a => a.properties['number']).reduce((p, a) => p + a, 0),
+            double: beds.filter(a => this.getBedOccupancy(a.properties) === 2).map(a => a.properties['number']).reduce((p, a) => p + a, 0),
+            triple: beds.filter(a => this.getBedOccupancy(a.properties) === 3).map(a =>  a.properties['number']).reduce((p, a) => p + a, 0),
+            quad: beds.filter(a => this.getBedOccupancy(a.properties) === 4).map(a =>  a.properties['number']).reduce((p, a) => p + a, 0)
         };
 
         return roomDetail;
