@@ -8,8 +8,10 @@ Any contributions are welcome!
 
 ## Get & Build
 
-`git clone https://github.com/lerer00/latude-booking-platform.git`
-`npm install`
+```
+git clone https://github.com/lerer00/latude-booking-platform.git
+npm install
+```
 
 ## Prerequisites
 
@@ -17,4 +19,6 @@ First to run locally you'll need a hub to run. This is an express API build on n
 
 ## Run locally
 
-`npm start`
+```
+npm start
+```
