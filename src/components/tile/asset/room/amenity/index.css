@@ -1,0 +1,27 @@
+.asset-room-amenity {
+    flex-direction: column;
+    text-align: center;
+}
+
+.asset-room-amenity .detail {
+    margin-top: 4px;
+}
+
+.asset-room-amenity .detail img {
+    height: 24px;
+}
+
+.asset-room-amenity .detail img.reverse {
+    transform: scaleX(-1);
+}
+
+.asset-room-amenity .detail img.merge-1 {
+    margin-left: -6px;
+}
+.asset-room-amenity .detail img.merge-2 {
+    margin-left: -3px;
+}
+
+.asset-room-amenity .detail span {
+    color: #a7a7a7;
+}

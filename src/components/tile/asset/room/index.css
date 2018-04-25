@@ -14,19 +14,6 @@
     margin: 8px;
 }
 
-.tile-asset .tile-asset-grid .sleep {
-    flex-direction: column;
-    text-align: center;
-}
-
-.tile-asset .tile-asset-grid .sleep .detail img {
-    height: 24px;
-}
-
-.tile-asset .tile-asset-grid .sleep .detail span {
-    color: #a7a7a7;
-}
-
 .tile-asset .tile-asset-grid .information {
     box-sizing: border-box;
     margin: 8px;

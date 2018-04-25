@@ -8,13 +8,14 @@ import {
     smokeFreeArea, locations, locationPin
 } from '../../img/index';
 import Tiles from '../../components/tiles';
-import TileAsset from '../../components/tile/asset';
+import RoomTile from '../../components/tile/asset/room';
 import EmptySearch from '../../components/emptySearch';
 import { Button, IButtonState } from '../../components/button';
 import { IProperty } from '../../models/property';
-import { IAsset } from '../../models/asset';
+import { IAsset } from '../../models/asset/asset';
 import { goBack } from 'react-router-redux';
 import store from '../../store';
+import { AssetTypes } from '../../models/asset/types';
 
 const Marker = require('react-mapbox-gl').Marker;
 const Cluster = require('react-mapbox-gl').Cluster;
@@ -129,13 +130,11 @@ class Property extends React.Component<Property.Props, Property.State> {
                 <img className='marker' src={locationPin} />
             </Marker>);
 
-        var assets: any = [];
-        this.state.assets.forEach((asset) => {
-            assets.push(<TileAsset key={asset.id} asset={asset} />);
-        });
+        var rooms: Array<any> = [];
+        rooms = this.state.assets.filter(a => a.type === AssetTypes.ROOM).map((a) => { return <RoomTile key={a.id} asset={a} />; });
 
         return (
-            <div className='route-container property-route'>
+            <div className='route-container property-route' >
                 <div className='header-spacer'>
                     &nbsp;
                 </div>
@@ -250,9 +249,9 @@ class Property extends React.Component<Property.Props, Property.State> {
                                 </div>
                             </div>
                             <div className='assets'>
-                                <h1 className='title'>Assets</h1>
+                                <h1 className='title'>Rooms</h1>
                                 <div className='assets-list'>
-                                    <Tiles list={assets} empty={<EmptySearch text={'There\'s no asset found within this property.'} />} />
+                                    <Tiles list={rooms} empty={<EmptySearch text={'There\'s no room found within this property.'} />} />
                                 </div>
                             </div>
                         </StickyContainer>
