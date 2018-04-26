@@ -1,4 +1,4 @@
-# latude booking platform
+# 🌌 latude booking platform
 
 First online travel agency build on top of the latude network. Users will be able to book their stay in their desired property using crypto or fiat as a payment. 
 
