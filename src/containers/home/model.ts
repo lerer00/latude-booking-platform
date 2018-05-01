@@ -1,7 +1,8 @@
 import { Moment } from 'moment';
+import { Destination } from '../../components/finder';
 
 export type FinderModel = {
-    destination: string;
+    destination: Destination;
     dateRange: {
         startDate: Moment;
         endDate: Moment;

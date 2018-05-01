@@ -9,7 +9,10 @@ const initialState: State = {
     properties: [],
     isLoading: false,
     finder: {
-        destination: '',
+        destination: {
+            label: '',
+            geojson: {}
+        },
         dateRange: {
             startDate: moment(),
             endDate: moment().add(3, 'days')

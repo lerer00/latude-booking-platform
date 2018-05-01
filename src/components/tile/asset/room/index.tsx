@@ -81,8 +81,8 @@ class RoomTile extends React.Component<Props, State> {
                 <div className='tile-asset-grid'>
                     <RoomAmenity amenities={this.props.asset.amenities} />
                     <div className='information'>
-                        <h1 className='name'>King Room - City View</h1>
-                        <div className='description'>{this.props.asset.description}</div>
+                        <h1 className='name'>{this.props.asset.description}</h1>
+                        <p className='description'>room</p>
                     </div>
                     <div className='availability'>{
                         !this.props.asset.active ?
