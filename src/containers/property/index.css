@@ -91,25 +91,6 @@
     width: 100%;
 }
 
-.property-route .content .property-detail .location .title {
-    font-size: 36px;
-    color: #595959;
-    margin-bottom: 16px;
-}
-
-.property-route .content .property-detail .location .map {
-    position: relative;
-    width: 100%;
-    height: 400px;
-    box-shadow: 0 2px 3px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
-    transition: all 0.8s;
-    margin-bottom: 16px;
-}
-
-.property-route .content .property-detail .location .map .mapboxgl-marker {
-    pointer-events: none;
-}
-
 .property-route .content .property-detail .assets .title {
     font-size: 36px;
     color: #595959;

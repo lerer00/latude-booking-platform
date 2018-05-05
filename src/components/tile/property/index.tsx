@@ -69,11 +69,6 @@ class PropertyTile extends React.Component<PropertyTile.Props, PropertyTile.Stat
     };
 
     render() {
-        let isLit = null;
-        if (this.props.property.rating > 4) {
-            isLit = <span className='is-lit'>🔥</span>;
-        }
-
         let thumbnail;
         if (this.props.property.images.length > 0) {
             thumbnail = <img src={this.props.property.images[0]} />;
@@ -88,14 +83,20 @@ class PropertyTile extends React.Component<PropertyTile.Props, PropertyTile.Stat
                         {thumbnail}
                     </div>
                     <div className='tile-property-content'>
-                        <h1 className='tile-property-name'>{isLit} {this.props.property.name}</h1>
-                        <p className='tile-property-description'>
-                            {this.props.property.description.substring(0, 500)}
-                        </p>
-                        <NavLink className='link' to={'/properties/' + this.props.property.id} >
-                            more details <img src={arrowNext} />
-                        </NavLink>
-                        <Rating max={5} score={this.props.property.rating} />
+                        <div className='tile-property-content-division'>
+                            <h1 className='tile-property-name'>{this.props.property.name}</h1>
+                        </div>
+                        <div className='tile-property-content-division'>
+                            <p className='tile-property-description'>
+                                {this.props.property.description.substring(0, 500)}...
+                                <NavLink className='link' to={'/properties/' + this.props.property.id} >
+                                    more details <img src={arrowNext} />
+                                </NavLink>
+                            </p>
+                        </div>
+                        <div className='tile-property-content-division'>
+                            <Rating max={5} score={this.props.property.rating} />
+                        </div>
                     </div>
                     <div className='tile-property-details'>
                         <p className='tile-property-price'>

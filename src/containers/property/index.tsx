@@ -5,7 +5,7 @@ import axios, { AxiosResponse } from 'axios';
 import {
     bookShelf, computerPc, disableSign, forkSpoon,
     lockKey, networkWifiSignal, petAllow, presentation,
-    smokeFreeArea, locations, locationPin
+    smokeFreeArea
 } from '../../img/index';
 import Tiles from '../../components/tiles';
 import RoomTile from '../../components/tile/asset/room';
@@ -17,15 +17,6 @@ import { goBack } from 'react-router-redux';
 import store from '../../store';
 import { AssetTypes } from '../../models/asset/types';
 
-const Marker = require('react-mapbox-gl').Marker;
-const Cluster = require('react-mapbox-gl').Cluster;
-const ReactMapboxGl = require('react-mapbox-gl').default;
-const Map = ReactMapboxGl({
-    accessToken: process.env.REACT_APP_MAPBOX_TOKEN,
-    attributionControl: false,
-    logoPosition: 'top-left'
-});
-
 export namespace Property {
     export interface Props {
         match: any;
@@ -34,7 +25,6 @@ export namespace Property {
     export interface State {
         property: IProperty;
         assets: Array<IAsset>;
-        mapOptions: any;
     }
 }
 
@@ -87,23 +77,16 @@ class Property extends React.Component<Property.Props, Property.State> {
                 }
             },
             assets: [],
-            mapOptions: {
-                zoom: [8],
-                center: [0, 0]
-            }
         };
     }
 
     componentWillMount() {
         axios.get(process.env.REACT_APP_HUB_URL + '/properties/' + this.props.match.params.pid).then((response: AxiosResponse<IProperty>) => {
             this.setState({
-                mapOptions: {
-                    center: response.data.location.coordinates
-                },
                 property: response.data
             });
 
-            return axios.get(process.env.REACT_APP_HUB_URL + '/assets');
+            return axios.get(process.env.REACT_APP_HUB_URL + '/assets?company=' + this.props.match.params.pid);
         }).then((response) => {
             this.setState({
                 assets: response.data
@@ -113,23 +96,7 @@ class Property extends React.Component<Property.Props, Property.State> {
         });
     }
 
-    clusterMarker = (coordinates: any) => (
-        <Marker coordinates={coordinates}>
-            <img className='marker' src={locations} />
-        </Marker>
-    )
-
     render() {
-        var markers: any = [];
-        markers.push(
-            <Marker
-                key={0}
-                coordinates={this.state.property.location.coordinates}
-                anchor='bottom'
-            >
-                <img className='marker' src={locationPin} />
-            </Marker>);
-
         var rooms: Array<any> = [];
         rooms = this.state.assets.filter(a => a.type === AssetTypes.ROOM).map((a) => { return <RoomTile key={a.id} asset={a} />; });
 
@@ -226,26 +193,6 @@ class Property extends React.Component<Property.Props, Property.State> {
                                             </div>;
                                         })
                                     }
-                                </div>
-                            </div>
-                            <div className='location'>
-                                <h1 className='title'>Location</h1>
-                                <div className='map'>
-                                    <Map
-                                        style='mapbox://styles/mapbox/streets-v9'
-                                        containerStyle={{
-                                            height: '100%',
-                                            width: '100%'
-                                        }}
-                                        center={this.state.mapOptions.center}
-                                        zoom={this.state.mapOptions.zoom}
-                                    >
-                                        <Cluster ClusterMarkerFactory={this.clusterMarker}>
-                                            {
-                                                markers
-                                            }
-                                        </Cluster>
-                                    </Map>
                                 </div>
                             </div>
                             <div className='assets'>

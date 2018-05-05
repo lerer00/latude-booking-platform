@@ -1,21 +1,26 @@
 .tile-property {
     position: relative;
-    min-height: 235px;
+    height: 240px;
 }
 
 .tile-property .tile-property-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     width: 100%;
-    height: 235px;
+    height: 100%;
     grid-gap: 16px;
 }
 
+.tile-property .tile-property-grid .tile-property-thumbnail {
+    overflow: hidden;
+}
+
 .tile-property .tile-property-grid .tile-property-thumbnail img {
+    overflow: hidden;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
-    height: 100%;
-    width: 100%;
+    vertical-align: middle;
+    max-height: 240px;
 }
 
 .tile-property .tile-property-grid .tile-property-thumbnail .default-picture {
@@ -29,36 +34,38 @@
     grid-column: 2 / 5;
 }
 
-.tile-property .tile-property-grid .tile-property-content .tile-property-name {
+.tile-property .tile-property-grid .tile-property-content .tile-property-content-division {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.tile-property .tile-property-grid .tile-property-content .tile-property-content-division .tile-property-name {
     font-size: 2em;
     margin: 8px 0 8px 0;
 }
 
-.tile-property .tile-property-grid .tile-property-content .tile-property-name .is-lit {
-    font-size: 0.7em;
-}
-
-.tile-property .tile-property-grid .tile-property-content .tile-property-description {
+.tile-property .tile-property-grid .tile-property-content .tile-property-content-division .tile-property-description {
     font-size: 1em;
     color: #a7a7a7;
     line-height: 1.5;
     display: inline;
 }
 
-.tile-property .tile-property-grid .tile-property-content .link {
+.tile-property .tile-property-grid .tile-property-content .tile-property-content-division .tile-property-description .link {
     margin-left: 4px;
     text-decoration: none;
     color: #399aff;
     cursor: pointer;
 }
 
-.tile-property .tile-property-grid .tile-property-content .link img {
+.tile-property .tile-property-grid .tile-property-content .tile-property-content-division .tile-property-description .link img {
     display: inline-block;
     width: 17px;
     vertical-align: text-top;
 }
 
-.tile-property .tile-property-grid .tile-property-content .rating {
+.tile-property .tile-property-grid .tile-property-content .tile-property-content-division .rating {
     display: block;
     margin-top: 8px;
 }
@@ -72,7 +79,7 @@
 
 .tile-property .tile-property-grid .tile-property-details .tile-property-price {
     font-size: 1.3em;
-    margin-bottom: 16px;
+    margin: 4px 4px 16px 0;
 }
 
 .tile-property .tile-property-grid .tile-property-details .tile-property-actions {
