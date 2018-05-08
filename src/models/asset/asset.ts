@@ -8,8 +8,8 @@ export interface IAsset {
     description: string;
     active: boolean;
     parent: string;
-    staysMap: any;
-    stays: Array<any>;
+    bookingsMap: any;
+    bookings: Array<any>;
     amenities: Array<IAssetAmenity>;
     price: number;
     currency: string;

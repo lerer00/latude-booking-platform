@@ -5,8 +5,9 @@ import axios, { AxiosResponse } from 'axios';
 import {
     bookShelf, computerPc, disableSign, forkSpoon,
     lockKey, networkWifiSignal, petAllow, presentation,
-    smokeFreeArea
+    smokeFreeArea, locationPin
 } from '../../img/index';
+import Rating from '../../components/rating';
 import Tiles from '../../components/tiles';
 import RoomTile from '../../components/tile/asset/room';
 import EmptySearch from '../../components/emptySearch';
@@ -86,7 +87,7 @@ class Property extends React.Component<Property.Props, Property.State> {
                 property: response.data
             });
 
-            return axios.get(process.env.REACT_APP_HUB_URL + '/assets?company=' + this.props.match.params.pid);
+            return axios.get(process.env.REACT_APP_HUB_URL + '/assets?property=' + this.props.match.params.pid);
         }).then((response) => {
             this.setState({
                 assets: response.data
@@ -105,6 +106,9 @@ class Property extends React.Component<Property.Props, Property.State> {
                 <div className='header-spacer'>
                     &nbsp;
                 </div>
+                <div className='cover'>
+                    <div style={{ backgroundImage: `url(${this.state.property.images[0]})` }} />
+                </div>
                 <div className='route-content content'>
                     <div className='property-detail'>
                         <StickyContainer>
@@ -114,19 +118,20 @@ class Property extends React.Component<Property.Props, Property.State> {
                                     return <div style={style}>
                                         <div className='sticky-container'>
                                             <Button className='sticky-button' text='Back' state={IButtonState.default} action={() => { store.dispatch(goBack()); }} isLoading={false} />
-                                            <Button className='sticky-button' text='Save' state={IButtonState.default} action={() => { store.dispatch(goBack()); }} isLoading={false} />
-                                            <Button className='sticky-button' text='Like' state={IButtonState.default} action={() => { store.dispatch(goBack()); }} isLoading={false} />
+                                            {/* <Button className='sticky-button' text='Save' state={IButtonState.default} action={() => { store.dispatch(goBack()); }} isLoading={false} />
+                                            <Button className='sticky-button' text='Like' state={IButtonState.default} action={() => { store.dispatch(goBack()); }} isLoading={false} /> */}
                                         </div>
                                     </div>;
                                 }}
                             </Sticky>
 
                             <div className='main-info'>
-                                <h1 className='name'>{this.state.property.name}</h1>
-                                <h2 className='description'>{this.state.property.description}</h2>
+                                <h1 className='name'>{this.state.property.name}</h1><Rating max={5} score={this.state.property.rating} />
+                                <h2 className='location'><img src={locationPin}/> Québec, Canada, G1C5W5</h2>
+                                <h3 className='description'>{this.state.property.description}</h3>
                             </div>
                             <div className='amenities'>
-                                <h1 className='title'>Amenities</h1>
+                                <h1 className='title'>Facility</h1>
                                 <ol className='list'>
                                     {this.state.property.amenities.library.value &&
                                         <li className='amenity'>

@@ -1,27 +1,38 @@
-.property-route{
+.property-route {
     position: relative;
 }
 
+.property-route .cover {
+    width: 100%;
+}
+
+.property-route .cover>div {
+    height: 400px;
+    background-size: cover;
+    background-position: bottom;
+}
+
 .property-route .content {
+    margin-top: -200px;
     padding: 24px;
 }
 
 .property-route .content .property-detail {
     position: relative;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.95);
     border-radius: 3px;
     box-shadow: 0 2px 3px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
     padding: 16px;
 }
 
-.property-route .content .property-detail .sticky-container{
+.property-route .content .property-detail .sticky-container {
     width: 100px;
     left: -132px;
-    top: 86px;
+    top: 176px;
     position: absolute;
 }
 
-.property-route .content .property-detail .sticky-container .sticky-button{
+.property-route .content .property-detail .sticky-container .sticky-button {
     width: 100%;
     margin: 4px 0;
 }
@@ -29,7 +40,23 @@
 .property-route .content .property-detail .main-info .name {
     font-size: 48px;
     color: #595959;
-    margin-bottom: 16px;
+    margin: 0 8px 8px 0;
+    display: inline-block;
+}
+
+.property-route .content .property-detail .main-info .rating {
+    display: inline-block;
+}
+
+.property-route .content .property-detail .main-info .location {
+    font-size: 14px;
+    color: #8C8C8C;
+    margin: 0 0 16px 0;
+    display: block;
+}
+
+.property-route .content .property-detail .main-info .location img {
+    width: 16px;
 }
 
 .property-route .content .property-detail .main-info .description {
@@ -41,7 +68,7 @@
 }
 
 .property-route .content .property-detail .amenities .title {
-    font-size: 36px;
+    font-size: 24px;
     color: #595959;
     margin-bottom: 16px;
 }
@@ -74,7 +101,7 @@
 }
 
 .property-route .content .property-detail .gallery .title {
-    font-size: 36px;
+    font-size: 24px;
     color: #595959;
     margin-bottom: 16px;
 }
@@ -84,7 +111,7 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
 }
 
 .property-route .content .property-detail .gallery .grid img {
@@ -92,7 +119,7 @@
 }
 
 .property-route .content .property-detail .assets .title {
-    font-size: 36px;
+    font-size: 24px;
     color: #595959;
     margin-bottom: 16px;
 }

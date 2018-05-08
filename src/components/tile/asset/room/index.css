@@ -1,6 +1,17 @@
+.tile-asset {
+    border-left: solid 1px #c0c0c0;
+    display: inline-block;
+    box-shadow: none;
+    width: calc(50% - 1px);
+}
+
+.tile-asset:hover {
+    background-color: #f4f4f4;
+}
+
 .tile-asset .tile-asset-grid {
     display: grid;
-    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     width: 100%;
     grid-gap: 16px;
 }
@@ -17,7 +28,7 @@
 .tile-asset .tile-asset-grid .information {
     box-sizing: border-box;
     margin: 8px;
-    grid-column: 2 / 5;
+    grid-column: 1 / 4;
 }
 
 .tile-asset .tile-asset-grid .information .name {
@@ -27,8 +38,9 @@
 
 .tile-asset .tile-asset-grid .information .description {
     font-size: 16px;
-    line-height: 1.5;
     color: #a7a7a7;
+    line-height: 1.4;
+    margin-bottom: 8px;
 }
 
 .tile-asset .tile-asset-grid .availability {

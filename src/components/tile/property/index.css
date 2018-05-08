@@ -12,6 +12,7 @@
 }
 
 .tile-property .tile-property-grid .tile-property-thumbnail {
+    display: flex;
     overflow: hidden;
 }
 

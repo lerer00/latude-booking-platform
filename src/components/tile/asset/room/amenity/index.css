@@ -1,14 +1,14 @@
 .asset-room-amenity {
-    flex-direction: column;
-    text-align: center;
+    position: relative;
 }
 
 .asset-room-amenity .detail {
-    margin-top: 4px;
+    display: inline-block;
+    margin-right: 8px;
 }
 
 .asset-room-amenity .detail img {
-    height: 24px;
+    height: 20px;
 }
 
 .asset-room-amenity .detail img.reverse {
@@ -23,5 +23,7 @@
 }
 
 .asset-room-amenity .detail span {
+    font-size: 16px;
+    letter-spacing: -1px;
     color: #a7a7a7;
 }
