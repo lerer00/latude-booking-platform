@@ -23,12 +23,12 @@ var unlockWalletHtml = (
                 </div>
                 <p>
                     This application requires at least one valid account to be
-                  unlocked within your desired provider. This is needed to interact with the
-                  blockchain as the person you claim to be and no one else.
+                    unlocked within your desired provider. This is needed to interact with the
+                    blockchain as the person you claim to be and no one else.
           </p>
             </div>
             <div className='modal-actions'>
-                <button className='button'>Info</button>
+                <a target='_blank' className='button' href='https://medium.com/latude/metamask-introduction-f89ac80bd30f'>Info</a>
             </div>
         </div>
     </div>
@@ -52,7 +52,7 @@ var web3NeededHtml = (
           </p>
             </div>
             <div className='modal-actions'>
-                <button className='button'>Info</button>
+                <a target='_blank' className='button' href='https://medium.com/latude/metamask-introduction-f89ac80bd30f'>Info</a>
             </div>
         </div>
     </div>
