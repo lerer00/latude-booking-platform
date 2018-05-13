@@ -1,7 +1,21 @@
-.properties-route{
+.properties-route {
     position: relative;
 }
 
 .properties-route .content {
     padding: 24px 0;
+}
+
+.properties-route .content .filtering-panel {
+    margin: 0 0 16px 0;
+}
+
+.properties-route .content .filtering-panel .finder {
+    position: relative;
+    top: auto;
+    transform: none;
+}
+
+.properties-route .content .filtering-panel .finder .finder-grid-container {
+    grid-column-gap: 8px;
 }

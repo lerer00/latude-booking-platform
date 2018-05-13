@@ -8,5 +8,6 @@ export interface State {
 }
 
 export type Props = State & {
+    updateFinder: (prop: string, value: any) => void;
     searchFinder: () => void;
 };

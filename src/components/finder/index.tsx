@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button, IButtonState } from '../button';
 import { Select, ISelectState } from '../select';
 import { Moment } from 'moment';
+import store from '../../store';
 
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
@@ -21,13 +22,14 @@ interface DateRange {
 
 interface Props {
     isLoading: boolean;
-    destination: Destination;
-    dateRange: DateRange;
+    buttonText: string;
     update: (prop: string, value: any) => void;
     search: () => void;
 }
 
 interface State {
+    destination: Destination;
+    dateRange: DateRange;
     dateRangeFocused: 'startDate' | 'endDate' | null;
 }
 
@@ -36,12 +38,37 @@ class Finder extends React.Component<Props, State> {
         super();
 
         this.state = {
+            destination: store.getState()['home']['finder']['destination'],
+            dateRange: store.getState()['home']['finder']['dateRange'],
             dateRangeFocused: null
         };
 
         this.handleDestinationChange = this.handleDestinationChange.bind(this);
         this.handleDateRangeChange = this.handleDateRangeChange.bind(this);
         this.handleDateRangeFocusChange = this.handleDateRangeFocusChange.bind(this);
+        this.handleStoreChange = this.handleStoreChange.bind(this);
+
+        store.subscribe(this.handleStoreChange);
+    }
+
+    handleStoreChange() {
+        var newDestination: Destination = store.getState()['home']['finder']['destination'];
+        var newDateRange: DateRange = store.getState()['home']['finder']['dateRange'];
+
+        // check if destination changed
+        if (newDestination.label !== this.state.destination.label) {
+            this.setState({
+                destination: newDestination
+            });
+        }
+
+        // check if dateRange changed
+        if (newDateRange.endDate !== this.state.dateRange.endDate ||
+            newDateRange.startDate !== this.state.dateRange.startDate) {
+            this.setState({
+                dateRange: newDateRange
+            });
+        }
     }
 
     handleDestinationChange = (selectedDestination: any) => {
@@ -68,7 +95,7 @@ class Finder extends React.Component<Props, State> {
                 <div className='finder-grid-container'>
                     <Select
                         className='destination'
-                        value={this.props.destination.label}
+                        value={this.state.destination.label}
                         placeholder='Destination / Country / City'
                         state={ISelectState.default}
                         searchable={true}
@@ -83,24 +110,144 @@ class Finder extends React.Component<Props, State> {
                                     'coordinates': [
                                         [
                                             [
-                                                -71.52786254882812,
-                                                46.71632714994794
+                                                -124.85412597656249,
+                                                48.574789910928864
                                             ],
                                             [
-                                                -71.08840942382812,
-                                                46.71632714994794
+                                                -123.57421875,
+                                                48.23930899024907
                                             ],
                                             [
-                                                -71.08840942382812,
-                                                46.948387301863534
+                                                -123.17321777343749,
+                                                48.40003249610685
                                             ],
                                             [
-                                                -71.52786254882812,
-                                                46.948387301863534
+                                                -123.31054687499999,
+                                                48.71271258145237
                                             ],
                                             [
-                                                -71.52786254882812,
-                                                46.71632714994794
+                                                -123.0523681640625,
+                                                48.821332549646634
+                                            ],
+                                            [
+                                                -123.40942382812501,
+                                                49.0558701819386
+                                            ],
+                                            [
+                                                -95.1416015625,
+                                                49.06666839558117
+                                            ],
+                                            [
+                                                -95.03173828125,
+                                                49.48240137826932
+                                            ],
+                                            [
+                                                -94.63623046875,
+                                                48.545705491847464
+                                            ],
+                                            [
+                                                -88.74755859375,
+                                                47.84265762816538
+                                            ],
+                                            [
+                                                -88.41796875,
+                                                48.16608541901253
+                                            ],
+                                            [
+                                                -84.04541015625,
+                                                46.210249600187225
+                                            ],
+                                            [
+                                                -82.68310546875,
+                                                45.02695045318546
+                                            ],
+                                            [
+                                                -82.4139404296875,
+                                                43.00866413845207
+                                            ],
+                                            [
+                                                -82.6885986328125,
+                                                42.50450285299051
+                                            ],
+                                            [
+                                                -83.111572265625,
+                                                42.293564192170095
+                                            ],
+                                            [
+                                                -83.20770263671875,
+                                                41.947234477977766
+                                            ],
+                                            [
+                                                -82.63641357421875,
+                                                41.654445072031244
+                                            ],
+                                            [
+                                                -78.81591796875,
+                                                42.85180609584705
+                                            ],
+                                            [
+                                                -78.629150390625,
+                                                43.67581809328341
+                                            ],
+                                            [
+                                                -76.607666015625,
+                                                43.715534726205114
+                                            ],
+                                            [
+                                                -74.8828125,
+                                                45.034714778688624
+                                            ],
+                                            [
+                                                -71.444091796875,
+                                                45.07352060670971
+                                            ],
+                                            [
+                                                -69.290771484375,
+                                                47.42808726171425
+                                            ],
+                                            [
+                                                -67.91748046874999,
+                                                46.74738913515841
+                                            ],
+                                            [
+                                                -67.8955078125,
+                                                45.22074260255366
+                                            ],
+                                            [
+                                                -66.86279296875,
+                                                44.52001001133986
+                                            ],
+                                            [
+                                                -65.93994140625,
+                                                42.65012181368022
+                                            ],
+                                            [
+                                                -59.073486328125,
+                                                45.606352077118316
+                                            ],
+                                            [
+                                                -52.591552734375,
+                                                46.21785176740299
+                                            ],
+                                            [
+                                                -51.767578125,
+                                                51.72022261695929
+                                            ],
+                                            [
+                                                -65.830078125,
+                                                73.72659470212253
+                                            ],
+                                            [
+                                                -140.09765625,
+                                                72.36910450725075
+                                            ],
+                                            [
+                                                -141.328125,
+                                                60.457217797743944
+                                            ],
+                                            [
+                                                -124.85412597656249,
+                                                48.574789910928864
                                             ]
                                         ]
                                     ]
@@ -517,15 +664,15 @@ class Finder extends React.Component<Props, State> {
                         ]}
                     />
                     <DateRangePicker
-                        startDate={this.props.dateRange.startDate}
+                        startDate={this.state.dateRange.startDate}
                         startDateId='START_DATE'
-                        endDate={this.props.dateRange.endDate}
+                        endDate={this.state.dateRange.endDate}
                         endDateId='END_DATE'
                         onDatesChange={({ startDate, endDate }: any) => this.handleDateRangeChange(startDate, endDate)}
                         focusedInput={this.state.dateRangeFocused}
                         onFocusChange={(focusedInput: 'startDate' | 'endDate' | null) => this.handleDateRangeFocusChange(focusedInput)}
                     />
-                    <Button className='book-button' text='Search' state={IButtonState.default} action={this.props.search} isLoading={this.props.isLoading} />
+                    <Button className='book-button' text={this.props.buttonText} state={IButtonState.default} action={this.props.search} isLoading={this.props.isLoading} />
                 </div>
             </div>
         );

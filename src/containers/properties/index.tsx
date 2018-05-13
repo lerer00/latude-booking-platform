@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import Tiles from '../../components/tiles';
 import PropertyTile from '../../components/tile/property';
 import EmptySearch from '../../components/emptySearch';
+import Finder from '../../components/finder';
 import './index.css';
 
 import { Props, State } from './model';
 import {
-    searchFinderAction
+    searchFinderAction, updateFinderAction
 } from '../home/actions';
 
 class Properties extends React.Component<Props, State> {
@@ -34,6 +35,14 @@ class Properties extends React.Component<Props, State> {
                     &nbsp;
                 </div>
                 <div className='route-content content'>
+                    <div className='filtering-panel'>
+                        <Finder
+                            buttonText={'Update'}
+                            update={this.props.updateFinder}
+                            search={this.props.searchFinder}
+                            isLoading={this.props.isLoading}
+                        />
+                    </div>
                     <div className='filtered-properties-list'>
                         <Tiles list={properties} empty={<EmptySearch text={'There\'s no property found in regard to your criteria. Please select another region.'} />} />
                     </div>
@@ -54,6 +63,7 @@ const mapStateToProps = (state: {}) => {
 
 const mapDispatchToProps = (dispatch: Dispatch<State>) => {
     return {
+        updateFinder: (prop: string, value: any) => { dispatch(updateFinderAction(prop, value)); },
         searchFinder: () => { dispatch(searchFinderAction()); }
     };
 };

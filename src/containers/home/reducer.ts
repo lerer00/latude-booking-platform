@@ -23,7 +23,6 @@ const initialState: State = {
 export default (state = initialState, action: AnyAction): State => {
     const update = (payload: {}, stateArg = state) => Object.assign({}, stateArg, payload);
     const isLoading = (stateArg = state) => update({ isLoading: true }, state);
-    // const resetFinder = (stateArg = state) => update({ newCompany: initialState.finder }, state);
 
     switch (action.type) {
         case t.UPDATE_FINDER:

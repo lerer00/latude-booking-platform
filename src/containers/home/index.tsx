@@ -19,8 +19,7 @@ class Home extends React.Component<Props> {
       <div className='route-container home-route '>
         <div className='route-content content'>
           <Finder
-            destination={this.props.finder.destination}
-            dateRange={this.props.finder.dateRange}
+            buttonText={'Search'}
             update={this.props.updateFinder}
             search={this.props.searchFinder}
             isLoading={this.props.isLoading}
@@ -35,8 +34,7 @@ const mapStateToProps = (state: {}) => {
   const homeState: State = state['home'];
   return {
     isLoading: homeState.isLoading,
-    properties: homeState.properties,
-    finder: homeState.finder
+    properties: homeState.properties
   };
 };
 
